@@ -2,7 +2,23 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import requests
+import os
 
+curr_path = os.path.dirname(__file__)
+
+with open(os.path.join(curr_path, 'style.css'), encoding='utf-8') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+
+
+# st.markdown(
+#     f"""
+#     <style>
+#         {open("style.css").read()}
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 
 st.title('Animals deserve a home')
