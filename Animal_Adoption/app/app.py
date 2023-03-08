@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import requests
 
 
 
@@ -44,7 +45,7 @@ st.header('Questions')
 st.markdown('**Before** pressing submit, make sure you fill all fields below')
 
 with st.form(key='params_for_api'):
-    vgg_cat_or_dog=st.selectbox('Is this a cat or a dog', ['Dog', 'Cat'])
+    vgg_cat_or_dog=st.selectbox('Is this a cat or a dog?', ['Dog', 'Cat'])
     vgg_color=st.multiselect('Choose the color of this animal. If more than 2 pick only "Tricolor"', ['Black', 'White', 'Brown', 'Beige', 'Tricolor'])
     vgg_breed=st.selectbox('More information about this animal. Pick one', ['Big House Dog', 'Small House Dog', 'Long hair Cat', 'Short Hair Cat'])
     sex=st.selectbox('Sex of the animal', ['Male', 'Female'])
@@ -56,7 +57,23 @@ with st.form(key='params_for_api'):
     submitted = st.form_submit_button("Lets see how many days...")
 
 
+params = dict(
+    vgg_cat_or_dog=vgg_cat_or_dog,
+    vgg_color=vgg_color,
+    vgg_breed=vgg_breed,
+    sex=sex,
+    condition=condition,
+    age_animal=age_animal,
+    castraded=castraded)
 
+animals_api_url = 'https://taxifare.lewagon.ai/predict'
+response = requests.get(animals_api_url, params=params)
+
+prediction = response.json()
+
+pred = prediction['Days_in_shelter']
+
+st.header(f'Days in Shelter: ${round(pred, 2)}')
 
  #---------
  # TaxiFareModel front
