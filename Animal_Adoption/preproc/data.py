@@ -8,8 +8,8 @@ def get_data():
     Its values should be pandas.DataFrames loaded from csv files
     """
     # load the dataset
-    #root_dir = os.path.dirname(os.path.dirname(__file__))
-    csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
+    root_dir = os.path.dirname(os.path.dirname(__file__))
+    csv_path = os.path.join(root_dir, "../raw_data", "aac_intakes_outcomes.csv")
     data= pd.read_csv(os.path.join(csv_path))
 
     # Drop duplicates in place
