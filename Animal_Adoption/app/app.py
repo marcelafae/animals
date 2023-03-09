@@ -82,7 +82,7 @@ params = dict(
     age_animal=age_animal,
     castraded=castraded)
 
-animals_api_url = 'https://taxifare.lewagon.ai/predict'
+animals_api_url = 'https://animal-api-gzsqtwobpa-lz.a.run.app/predict'
 response = requests.get(animals_api_url, params=params)
 
 prediction = response.json()
