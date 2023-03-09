@@ -36,10 +36,6 @@ def get_data():
     data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
     data.drop(data[data['animal_type'] == 'Other'].index, inplace = True)
 
-    # drop the animal_id_outcome, that appears more than once in the column '???'
-    data.drop_duplicates(subset=["animal_id_outcome"], keep="first", inplace=True)
-    data[data["animal_id_outcome"].duplicated()]["animal_id_outcome"].unique()
-
     # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
     data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
     data['sex']= data.sex_upon_outcome.map(lambda x : x.split(" ")[-1])
