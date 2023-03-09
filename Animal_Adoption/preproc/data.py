@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from .preproc_colors import perform_all_color_cleaning
+from .preproc_intake_conditions import fix_age, drop_under_8_aged
 
 def get_data():
     """
