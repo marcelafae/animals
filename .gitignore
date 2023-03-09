@@ -1,3 +1,5 @@
 raw_data/
 .ipynb_checkpoints
 .python-version
+Animal_Adoption.egg-info/
+*__pycache__/
