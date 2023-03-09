@@ -1,19 +1,24 @@
 from sklearn.pipeline import make_pipeline
 from sklearn.compose import ColumnTransformer, make_column_transformer
 from sklearn.preprocessing import OneHotEncoder, FunctionTransformer
-
-# from taxifare.ml_logic.encoders import (transform_time_features,
-#                                               transform_lonlat_features,
-#                                               compute_geohash)
-
 import numpy as np
 import pandas as pd
 
 from colorama import Fore, Style
 
-# """"still need to edit this"""
+""""import the stuff from our project like this here"""
+# from taxifare.ml_logic.encoders import (transform_time_features,
+#                                               transform_lonlat_features,
+#                                               compute_geohash)
+
+
+
+""""STILL NEED TO FINISH THIS FILE"""
+
+
 
 """"from the file preproc_intake_conditions.py"""
+
 #functions to fix the age dtype from srt to floats and transform all the formats to years
 def fix_age(x: str)  -> float:
 
@@ -44,7 +49,6 @@ def drop_under_8_aged(df: pd.DataFrame)  -> pd.DataFrame:
 
 
 """"From the file preproc_colors.py"""
-
 
 #color name substitution
 def replace_colors(color_list: list,
@@ -115,6 +119,28 @@ def perform_all_color_cleaning(series: pd.Series) -> pd.Series:
 
 
 
+""""FROM THE FILE DATA_JANINE/PY"""
+
+class Animals:
+    def get_data(self):
+        """
+        Its values should be pandas.DataFrames loaded from csv files
+        """
+        # load the dataset
+        root_dir = os.path.dirname(os.path.dirname(__file__))
+        csv_path = os.path.join(root_dir, "data", "aac_intakes_outcomes.csv")
+        data= pd.read_csv(os.path.join(csv_path))
+
+        # Drop duplicates in place
+        data.drop_duplicates(inplace=True)
+
+        # convert several columns in another type
+        data['date_of_birth'] = pd.to_datetime(data['date_of_birth'])
+        data['outcome_datetime'] = pd.to_datetime(data['outcome_datetime'])
+        data['intake_datetime'] = pd.to_datetime(data['intake_datetime'])
+
+        # drop columns (meaningless, missing values or correlated to another column)
+        data.drop(['outcome_subtype', 'outcome_number', 'found_location', 'intake_type', 'time_in_shelter', 'time_in_shelter_days', 'age_upon_outcome_age_group', 'age_upon_intake_age_group', 'dob_year', 'dob_month', 'dob_monthyear'], axis=1, inplace= True)
 
 
 
