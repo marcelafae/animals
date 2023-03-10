@@ -2,15 +2,14 @@ import os
 import pandas as pd
 import numpy as np
 from .preproc_colors import perform_all_color_cleaning
-from .preproc_intake_conditions import fix_age, drop_under_8_aged
 
 def get_data():
     """
     Its values should be pandas.DataFrames loaded from csv files
     """
     # load the dataset
-    #root_dir = os.path.dirname(os.path.dirname(__file__))
-    csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
+    root_dir = os.path.dirname(os.path.dirname(__file__))
+    csv_path = os.path.join(root_dir, "../raw_data", "aac_intakes_outcomes.csv")
     data= pd.read_csv(os.path.join(csv_path))
 
     # Drop duplicates in place
@@ -22,17 +21,22 @@ def get_data():
     data['intake_datetime'] = pd.to_datetime(data['intake_datetime'])
 
     # drop columns (meaningless, missing values or correlated to another column)
-    data.drop(['outcome_subtype', 'outcome_number', 'found_location', 'intake_type', 'time_in_shelter', 'time_in_shelter_days', 'age_upon_outcome_age_group', 'age_upon_intake_age_group', 'dob_year', 'dob_month', 'dob_monthyear'], axis=1, inplace= True)
+    data.drop([
+        'outcome_subtype', 'outcome_number', 'found_location',
+        'time_in_shelter', 'age_upon_outcome_age_group', 'age_upon_intake_age_group',
+        'dob_year', 'dob_month', 'dob_monthyear', "age_upon_outcome",
+        'age_upon_intake_(days)', 'count', 'age_upon_outcome_(days)',
+        'age_upon_outcome_(years)', 'outcome_month',
+        'outcome_year', 'outcome_monthyear', 'outcome_weekday',
+        'outcome_hour', 'animal_id_intake', 'age_upon_intake_(days)',
+        'intake_monthyear', 'outcome_datetime', 'animal_id_outcome', 'outcome_type'
+        ], axis=1, inplace= True)
     data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
     data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
     data.drop(data[data['animal_type'] == 'Other'].index, inplace = True)
 
-    # drop the animal_id_outcome, that appears more than once in the column '???'
-    data.drop_duplicates(subset=["animal_id_outcome"], keep="first", inplace=True)
-    data[data["animal_id_outcome"].duplicated()]["animal_id_outcome"].unique()
-
-    # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type' 
+    # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
     data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
     data['sex']= data.sex_upon_outcome.map(lambda x : x.split(" ")[-1])
     # relabel the values of the new column 'sex' to value 'Neutered' and value 'Intact' and value 'NaN'(unknown)
@@ -48,16 +52,16 @@ def get_data():
     return data
     # if data:
     #     return data
-    # else: 
+    # else:
     #     return "Data can't be loaded."
-        
-# relable the column 'breed'     
+
+# relable the column 'breed'
 def get_breed (series: pd.Series) -> pd.Series:
     def cleaning(d: str):
         ## remove whitespaces
-        d = d.strip() 
-        ## lowercasing 
-        d = d.lower() 
+        d = d.strip()
+        ## lowercasing
+        d = d.lower()
         ## remove the word 'mix'-> doesn't work -> data['breed']= data.breed.str.replace('mix', '')
         d = d.replace('mix', '')
         return d
@@ -70,12 +74,12 @@ def get_breed (series: pd.Series) -> pd.Series:
         "long_hair": ["domestic longhair", "long hair", "longhair"],
         "uncommon": get_uncommon_breeds(series),
     }
-    
+
     for key, val in breed_map.items():
         series = replace_breeds(val, key, series)
         # series = series.map(uncommon???)
     return series
-    
+
     # def unknown(d):
 
 def replace_breeds(breed_list: list,

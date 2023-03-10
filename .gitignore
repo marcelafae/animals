@@ -3,3 +3,4 @@ raw_data/
 .python-version
 Animal_Adoption.egg-info/
 *__pycache__/
+.env
