@@ -49,15 +49,15 @@ def has_spots(in_color: str) -> str:
 #function for performing all of the above operations at once!
 def perform_all_color_cleaning(series: pd.Series) -> pd.Series:
     color_map = {
-        "": [" Tick"],
+        "": [" Tick", " Point"],
         "Brown": ["Chocolate", "Liver", "Ruddy"],
-        "White": ["Flame Point", "Lilac Point"],
-        "Beige": ["Buff", "Tan", "Fawn", "Yellow", "Gold", "Cream", "Seal Point", "Lynx Point", "Brown Point", "Apricot", "Pink"],
+        "White": ["Flame", "Lilac"],
+        "Beige": ["Buff", "Tan", "Fawn", "Yellow", "Gold", "Cream", "Seal", "Lynx", "Brown", "Apricot", "Pink"],
         "Orange": ["Orange Tabby", "Red"],
         "Tricolor": ["Tricolor", "Calico"],
         "Spotted": ["Black Merle", "Brown Merle", "Gray Merle", "Orange Merle" ],
         "Striped": ["Tiger", "Tabby"],
-        "Gray": ["Black Smoke", "Gray Smoke", "Gray Point", "Silver Lynx Point", "Silver", "Agouti", "Grey", "Blue", "Gray Beige"],
+        "Gray": ["Black Smoke", "Gray Smoke", "Silver Smoke", "Blue Smoke", "Silver Lynx", "Silver", "Agouti", "Grey", "Blue", "Gray Beige"],
     }
     for key, val in color_map.items():
         series = replace_colors(val, key, series)
