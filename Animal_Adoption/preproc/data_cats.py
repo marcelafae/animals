@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from .preproc_colors import perform_all_color_cleaning
+# from .preproc_colors import perform_all_color_cleaning
 
 
 def merge_cats():
