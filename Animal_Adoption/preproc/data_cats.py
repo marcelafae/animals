@@ -1,23 +1,7 @@
 import os
 import pandas as pd
-import numpy as np
 
-# def get_data_cats():
-#     """
-#     Its values should be pandas.DataFrames loaded from csv files
-#     """
-#     # load the dataset
-#     #root_dir = os.path.dirname(os.path.dirname(__file__))
-#     csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
-#     data_cats= pd.read_csv(os.path.join(csv_path_cats))
-#     return data_cats
 
-# def get_data():
-#     #load both dataframes
-
-#     csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
-#     data= pd.read_csv(os.path.join(csv_path))
-#     return data
 
 def get_merge_cats():
     """"function to merge the aac_shelter_cat_outcome_eng.csv with our clean dataframe"""
@@ -27,13 +11,13 @@ def get_merge_cats():
     data= pd.read_csv(os.path.join(csv_path))
     csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
     data_cats= pd.read_csv(os.path.join(csv_path_cats))
-    return data_cats
-
     #drop all dogs from main dataframe
     data.drop(data[data['animal_type'] == 'Dog'].index, inplace = True)
 
     #merge to dataframes into one with only cats but all information
     data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
+
+
     return data_cats
 
 #keep only the useful columns and rename them
