@@ -1,6 +1,8 @@
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import pickle
+from Animal_Adoption.preproc.transformers import ColorTransformer
 
 app = FastAPI()
 #app.state.model = your_model_library.load_model("path/to/model/file")
@@ -14,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-# example url http://127.0.0.1:8000/predict?vgg_cat_or_dog='Cat'&vgg_color='Black'&vgg_breed='Sheperd'&sex='Female'&condition='Normal'&age_animal=2&castraded='Yes'
+# example url http://127.0.0.1:8000/predict?vgg_cat_or_dog=Cat&vgg_color=Black&vgg_breed=Sheperd&sex=Female&condition=Normal&age_animal=2&castraded=true
 @app.get("/predict")
 def predict(vgg_cat_or_dog: str,  # 'Cat' or 'Dog' (from vgg)
             vgg_color: str,    # 'Black' // color of the animal (from vgg)
@@ -34,23 +36,19 @@ def predict(vgg_cat_or_dog: str,  # 'Cat' or 'Dog' (from vgg)
     return {"prediction": prediction}
     """
 
-
     X_pred = pd.DataFrame(dict(
         vgg_cat_or_dog=['animal_type'],
         vgg_color=['color'],
         vgg_breed=['breed'],
-        sex=['sex_animal'],
-        condition=['condition_animal'],
-        age_animal=['age_animal'],
-        castraded=['castraded']))
-
-    y_pred = 12
-
- #   model = load_model()  // this is where I will load the model
+        sex=['sex'],
+        condition=['intake_condition'],
+        age_animal=['age_upon_intake_(years)'],
+        castraded=['sex_type']))
+    print(X_pred)
+    file = open('pipeline_best_model.pkl','rb')
+    pipeline = pickle.load(file)
     # assert model is not None
-
-    # X_processed = preprocess_features(X_pred)
-    # y_pred = model.predict(X_processed)
+    y_pred = pipeline.predict(X_pred)
     return {'days_in_shelter':float(y_pred)}
 
 @app.get("/")
