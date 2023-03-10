@@ -2,8 +2,16 @@ import os
 import pandas as pd
 import numpy as np
 from .preproc_colors import perform_all_color_cleaning
+from.preproc_intake_conditions import fix_age
 
-def get_data():
+
+def separate_dataframe(df, column_name, unique_value):
+    grouped = df.groupby(column_name)
+    filtered_df = grouped.get_group(unique_value)
+    #other_df= df.loc[df[column_name] != unique_value]
+    return filtered_df
+
+def get_data(animal_type):
     """
     Its values should be pandas.DataFrames loaded from csv files
     """
@@ -46,14 +54,16 @@ def get_data():
     # relabled columns: column 'color'
     #color name substitution
     data['color']= perform_all_color_cleaning(data['color'])
+    # data['color_new']= data.
+    
     # relabled columns: column 'breed'
     data['breed']= get_breed(data['breed'])
-    # try loading the datatset and getting an error if not
+
+
+    data= separate_dataframe(data, 'animal_type', animal_type)
     return data
-    # if data:
-    #     return data
-    # else:
-    #     return "Data can't be loaded."
+
+
 
 # relable the column 'breed'
 def get_breed (series: pd.Series) -> pd.Series:
@@ -77,10 +87,7 @@ def get_breed (series: pd.Series) -> pd.Series:
 
     for key, val in breed_map.items():
         series = replace_breeds(val, key, series)
-        # series = series.map(uncommon???)
     return series
-
-    # def unknown(d):
 
 def replace_breeds(breed_list: list,
                    new_breed: str,
