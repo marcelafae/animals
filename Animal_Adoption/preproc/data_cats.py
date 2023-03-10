@@ -1,16 +1,33 @@
 import os
 import pandas as pd
 import numpy as np
-# from .preproc_colors import perform_all_color_cleaning
 
+# def get_data_cats():
+#     """
+#     Its values should be pandas.DataFrames loaded from csv files
+#     """
+#     # load the dataset
+#     #root_dir = os.path.dirname(os.path.dirname(__file__))
+#     csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
+#     data_cats= pd.read_csv(os.path.join(csv_path_cats))
+#     return data_cats
 
-def merge_cats():
+# def get_data():
+#     #load both dataframes
+
+#     csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
+#     data= pd.read_csv(os.path.join(csv_path))
+#     return data
+
+def get_merge_cats():
     """"function to merge the aac_shelter_cat_outcome_eng.csv with our clean dataframe"""
-    #load both dataframes
-    csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
+     #load both dataframes
+
     csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
-    data_cats= pd.read_csv(os.path.join(csv_path_cats))
     data= pd.read_csv(os.path.join(csv_path))
+    csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
+    data_cats= pd.read_csv(os.path.join(csv_path_cats))
+    return data_cats
 
     #drop all dogs from main dataframe
     data.drop(data[data['animal_type'] == 'Dog'].index, inplace = True)
@@ -22,7 +39,7 @@ def merge_cats():
 #keep only the useful columns and rename them
 def select_and_rename_columns(df):
     # list of columns to keep
-    columns_to_keep = ['animal_type_x', 'breed_x', 'color_y', 'intake_condition', 'intake_type',
+    columns_to_keep = ['animal_id','animal_type_x', 'breed_x', 'color_y', 'intake_condition', 'intake_type',
                        'sex_upon_intake', 'age_upon_intake_(years)', 'intake_datetime',
                        'time_in_shelter_days', 'Cat/Kitten (outcome)', 'cfa_breed', 'domestic_breed',
                        'sex_y', 'Spay/Neuter', 'breed_y']
@@ -31,7 +48,6 @@ def select_and_rename_columns(df):
     df_selected = df[columns_to_keep].rename(columns={'animal_type_x': 'animal_type',
                                                       'color_y': 'color',
                                                      'breed_x': 'breed',
-                                                      'color_y': 'color',
                                                      'sex_y': 'sex',
                                                       'Cat/Kitten (outcome)': 'Cat/Kitten',
                                                       'breed_y': 'hair length'})
