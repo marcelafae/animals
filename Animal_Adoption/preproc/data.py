@@ -28,8 +28,8 @@ def get_data():
         'age_upon_intake_(days)', 'count', 'age_upon_outcome_(days)',
         'age_upon_outcome_(years)', 'outcome_month',
         'outcome_year', 'outcome_monthyear', 'outcome_weekday',
-        'outcome_hour', 'animal_id_intake', 'age_upon_intake_(days)',
-        'intake_monthyear', 'outcome_datetime', 'animal_id_outcome', 'outcome_type'
+        'outcome_hour', 'age_upon_intake_(days)',
+        'intake_monthyear', 'outcome_datetime', 'outcome_type'
         ], axis=1, inplace= True)
     data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
