@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np
 from preproc.preproc_colors import perform_all_color_cleaning
 from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
-from preproc.target_relabled import breed_2class, outcome_type_2classes
+from preproc.target_relabled import breed_2class
+from preproc.target_relabled import outcome_type_2classes
+from preproc.target_relabled import intake_condition_2classes
 from preproc.target_relabled import time_in_shelter_days_round_2classes, time_in_shelter_days_round_5classes
 
 # nothing from and import from the data_dog.py because it is already inside 
@@ -69,6 +71,9 @@ def get_data_all():
     time_in_shelter_days_round_5classes(data, 'time_in_shelter_days_round')
     # 'time_in_shelter_days_2' -> 2 classes (one week, more than one week)
     time_in_shelter_days_round_2classes(data, 'time_in_shelter_days_round')
+    
+    # relabled column: 'intake_condition' into 'intake_condition_2classes with the values 'normal' and 'not normal'
+    intake_condition_2classes(data, 'intake_condition')
     
     return data 
 

@@ -1,16 +1,18 @@
 import pandas as pd
 
+
+#relabled column 'breed' into column 'breed_2class' with values 'mixed' and 'non mixed'
 def breed_2class(df, column_name):
     breeds = []
     for breed in df.loc[:,column_name]:
         if 'Mix' in breed or '/' in breed or 'Domestic' in breed:
             breeds.append('mixed')
         else:
-            breeds.append('non_mixed')
+            breeds.append('not mixed')
     df['breed_mix_nonmix'] = breeds
     return df.reset_index(drop=True)
 
-# new name!!!
+# relabled column 'time_in_shelter_days_round' into column 'time_in_shelter_days_round_5classes' with values 'several hours', "between 1 and 5 days"...
 def time_in_shelter_days_round_5classes(df, column_name):
     classes_5= []
     for value in df.loc[:, column_name]:
@@ -33,7 +35,7 @@ def time_in_shelter_days_round_5classes(df, column_name):
     df['time_in_shelter_days_round_5classes']= classes_5
     return df.reset_index(drop=True)
 
-# new_name!!!
+# relabled column 'time_in_shelter_days_round' into column 'time_in_shelter_days_round_2classes' with values 'one week' and 'more than one week'
 def time_in_shelter_days_round_2classes(df, column_name):
     classes_2= []
     for value in df.loc[:, column_name]:
@@ -46,7 +48,7 @@ def time_in_shelter_days_round_2classes(df, column_name):
 
 
 
-# relable the colum 'outcome_type' into two classes 'adopted' or 'not adopted'   
+# relable the colum 'outcome_type' into column 'outcome_type_2classes' with values 'adopted' and 'not adopted'   
 def outcome_type_2classes(df, column_name):
     classes_2= []
     for value in df.loc[:, column_name]:
@@ -67,4 +69,27 @@ def outcome_type_2classes(df, column_name):
         else:
             classes_2.append('not adopted')
     df['outcome_type_2classes']= classes_2
+    return df.reset_index(drop=True)
+
+# relable the colum 'intake_condition' into column 'intake_condition_2classes' with values 'normal' and 'not normal'
+def intake_condition_2classes(df, column_name):
+    classes_2= []
+    for value in df.loc[:, column_name]:
+        if value == 'Normal':
+            classes_2.append('normal')
+        elif value == 'Injured': 
+            classes_2.append('not normal')
+        elif value == 'Sick':
+            classes_2.append('not normal')
+        elif value == 'Nursing':
+            classes_2.append('not normal')
+        elif value == 'Aged':
+            classes_2.append('not normal')
+        elif value == 'Other':
+            classes_2.append('not normal')
+        elif value == 'Feral':
+            classes_2.append('not normal')
+        else:
+            classes_2.append('not normal')
+    df['intake_condition_2classes']= classes_2
     return df.reset_index(drop=True)
