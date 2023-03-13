@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 from preproc.preproc_colors import perform_all_color_cleaning
 from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
+from preproc.target_relabled import breed_2class, outcome_type_2classes
+from preproc.target_relabled import time_in_shelter_days_round_2classes, time_in_shelter_days_round_5classes
 
 # nothing from and import from the data_dog.py because it is already inside 
 
@@ -21,6 +23,7 @@ def get_data_all():
     data['outcome_datetime'] = pd.to_datetime(data['outcome_datetime'])
     data['intake_datetime'] = pd.to_datetime(data['intake_datetime'])
 
+    # columns not dropped: 
     # drop columns (meaningless, missing values or correlated to another column)
     data.drop([
         'outcome_subtype', 'outcome_number', 'found_location',
@@ -30,8 +33,7 @@ def get_data_all():
         'age_upon_outcome_(years)', 'outcome_month',
         'outcome_year', 'outcome_monthyear', 'outcome_weekday',
         'outcome_hour', 'outcome_datetime', 'age_upon_intake_(days)',
-        'intake_monthyear', 'outcome_type'
-        ], axis=1, inplace= True)
+        'intake_monthyear'], axis=1, inplace= True)
     data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
     data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
@@ -44,36 +46,33 @@ def get_data_all():
     data.sex_type.replace(['Neutered', 'Spayed', 'Intact', 'Unknown'], ['Neutered', 'Neutered', 'Intact', 'Unknown'], inplace=True)
     data.sex.replace(['Male', 'Female', 'Unknown', 'nan'], ['Male', 'Female', 'Unknown', 'nan'], inplace=True)
 
-    # relabled columns: column 'color'
+    ## relabled columns
+    
+    # column 'color'
     #color name substitution
     data['color']= perform_all_color_cleaning(data['color'])
     # data['color_new']= data.
     
-    # relabled columns: column 'breed'
-    data['breed']= get_breed(data['breed'])
+    # relabled column 'breed_new' with values 'small', 'big', 'uncommon'
+    data['breed_new']= get_breed(data['breed'])
+    # relabled column 'breed_mix_nonmix' with values 'mix' and 'non_mix'
+    breed_2class(data,'breed')
+
+    # relabled column 'outcome_type_2classes' with values 'adopted' and 'not adopted'
+    outcome_type_2classes(data, 'outcome_type')
+
     
-    # relabled columns: time_in_shelter, mean is 17 days
-    data['time_in_shelter_class']= data['time_in_shelter_days'].apply(classify_value)
+    # relabled columns: time_in_shelter
+    # round the values in the column time_in_shelter_days to get a meaningfull outcome-> not several hours but days
+    data['time_in_shelter_days_round']= data['time_in_shelter_days'].round()
+    # 'time_in_shelter_days_5' -> 5 classes 
+    time_in_shelter_days_round_5classes(data, 'time_in_shelter_days_round')
+    # 'time_in_shelter_days_2' -> 2 classes (one week, more than one week)
+    time_in_shelter_days_round_2classes(data, 'time_in_shelter_days_round')
+    
     return data 
 
-def classify_value(value):
-    if 0 <= value < 1:
-        return 'after several hours'
-    elif 1 <= value <=5: 
-        return 'between 1 and 5 days'
-    elif 5< value <= 10:
-        return 'between 6 and 10 days'
-    elif 10 < value <= 15:
-        return 'between 11 and 15 days'
-    elif 15 < value <= 20:
-        return 'between 16 and 20 days'
-    elif 20 < value <=25:
-        return 'between 21 and 25 days'
-    elif 25 < value <= 30:
-        return 'between 26 and 30 days'
-    else:
-        return 'higher than 30 days'
-
+    
 # relable the column 'breed'
 def get_breed (series: pd.Series) -> pd.Series:
     def cleaning(d: str):
@@ -122,5 +121,3 @@ def breeds_separated(in_breed: pd.Series) -> pd.Series:
 def get_uncommon_breeds(breeds: pd.Series) -> list:
     return breeds_separated(breeds).value_counts()[44:].index
 
-# if __name__ == "__main__":
-#     get_data())

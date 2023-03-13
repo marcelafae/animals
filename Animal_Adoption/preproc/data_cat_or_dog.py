@@ -42,15 +42,18 @@ def get_data(animal_type):
     data = separate_dataframe(data,'animal_type', animal_type)
     
     # Challenge to merge together
-    if animal_type == "Cat":
-        csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
-        data_cats= pd.read_csv(os.path.join(csv_path_cats))
-        #merge to dataframes into one with only cats but all information
-        data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
-         # call the second function 'select_and_rename_columns' into the first function
-        data_cats = select_and_rename_columns(data_cats)
-        return data_cats
-    else:
-        return data
+    # if animal_type == "Cat":
+    #     csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
+    #     data_cats= pd.read_csv(os.path.join(csv_path_cats))
+    #     #merge to dataframes into one with only cats but all information
+    #     ## check if duplicates or missing values -> duplicates not the problem-> missing values is a problem (how= 'right') -> 
+    #     data_cats.merge(data, right_on='animal_id_outcome', left_on= 'animal_id', how= 'left')
+
+    #     # data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
+    #      # call the second function 'select_and_rename_columns' into the first function
+    #     data_cats = select_and_rename_columns(data_cats)
+    #     return data_cats
+    # else:
+    #     return data
     return data
 
