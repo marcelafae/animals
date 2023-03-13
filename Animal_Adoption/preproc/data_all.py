@@ -2,12 +2,11 @@
 import os
 import pandas as pd
 import numpy as np
-from preproc.preproc_colors import perform_all_color_cleaning
-from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
+from .preproc_colors import perform_all_color_cleaning
 
-# nothing from and import from the data_dog.py because it is already inside 
+# nothing from and import from the data_dog.py because it is already inside
 
-def get_data_all(): 
+def get_data_all():
     # load the dataset
     root_dir = os.path.dirname(os.path.dirname(__file__))
     csv_path = os.path.join(root_dir, "../raw_data", "aac_intakes_outcomes.csv")
@@ -48,18 +47,18 @@ def get_data_all():
     #color name substitution
     data['color']= perform_all_color_cleaning(data['color'])
     # data['color_new']= data.
-    
+
     # relabled columns: column 'breed'
     data['breed']= get_breed(data['breed'])
-    
+
     # relabled columns: time_in_shelter, mean is 17 days
     data['time_in_shelter_class']= data['time_in_shelter_days'].apply(classify_value)
-    return data 
+    return data
 
 def classify_value(value):
     if 0 <= value < 1:
         return 'after several hours'
-    elif 1 <= value <=5: 
+    elif 1 <= value <=5:
         return 'between 1 and 5 days'
     elif 5< value <= 10:
         return 'between 6 and 10 days'
