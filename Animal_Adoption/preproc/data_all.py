@@ -1,20 +1,13 @@
+
 import os
 import pandas as pd
 import numpy as np
-from .preproc_colors import perform_all_color_cleaning
-from.preproc_intake_conditions import fix_age
+from preproc.preproc_colors import perform_all_color_cleaning
+from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
 
+# nothing from and import from the data_dog.py because it is already inside 
 
-def separate_dataframe(df, column_name, unique_value):
-    grouped = df.groupby(column_name)
-    filtered_df = grouped.get_group(unique_value)
-    #other_df= df.loc[df[column_name] != unique_value]
-    return filtered_df
-
-def get_data(animal_type):
-    """
-    Its values should be pandas.DataFrames loaded from csv files
-    """
+def get_data_all(): 
     # load the dataset
     root_dir = os.path.dirname(os.path.dirname(__file__))
     csv_path = os.path.join(root_dir, "../raw_data", "aac_intakes_outcomes.csv")
@@ -36,8 +29,8 @@ def get_data(animal_type):
         'age_upon_intake_(days)', 'count', 'age_upon_outcome_(days)',
         'age_upon_outcome_(years)', 'outcome_month',
         'outcome_year', 'outcome_monthyear', 'outcome_weekday',
-        'outcome_hour', 'age_upon_intake_(days)',
-        'intake_monthyear', 'outcome_datetime', 'outcome_type'
+        'outcome_hour', 'outcome_datetime', 'age_upon_intake_(days)',
+        'intake_monthyear', 'outcome_type'
         ], axis=1, inplace= True)
     data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
@@ -58,13 +51,28 @@ def get_data(animal_type):
     
     # relabled columns: column 'breed'
     data['breed']= get_breed(data['breed'])
-
-
-    data = separate_dataframe(data,'animal_type', animal_type)
     
-    return data
+    # relabled columns: time_in_shelter, mean is 17 days
+    data['time_in_shelter_class']= data['time_in_shelter_days'].apply(classify_value)
+    return data 
 
-
+def classify_value(value):
+    if 0 <= value < 1:
+        return 'after several hours'
+    elif 1 <= value <=5: 
+        return 'between 1 and 5 days'
+    elif 5< value <= 10:
+        return 'between 6 and 10 days'
+    elif 10 < value <= 15:
+        return 'between 11 and 15 days'
+    elif 15 < value <= 20:
+        return 'between 16 and 20 days'
+    elif 20 < value <=25:
+        return 'between 21 and 25 days'
+    elif 25 < value <= 30:
+        return 'between 26 and 30 days'
+    else:
+        return 'higher than 30 days'
 
 # relable the column 'breed'
 def get_breed (series: pd.Series) -> pd.Series:
@@ -114,5 +122,5 @@ def breeds_separated(in_breed: pd.Series) -> pd.Series:
 def get_uncommon_breeds(breeds: pd.Series) -> list:
     return breeds_separated(breeds).value_counts()[44:].index
 
-if __name__ == "__main__":
-    print(get_data())
+# if __name__ == "__main__":
+#     get_data())
