@@ -1,0 +1,105 @@
+,image_link,good_with_children,good_with_other_dogs,shedding,grooming,drooling,coat_length,good_with_strangers,playfulness,protectiveness,trainability,energy,barking,min_life_expectancy,max_life_expectancy,max_height_male,max_height_female,max_weight_male,max_weight_female,min_height_male,min_height_female,min_weight_male,min_weight_female,name
+0,https://api-ninjas.com/images/dogs/chihuahua.jpg,1,3,2,1,1,2,2,4,4,3,4,5,14.0,16.0,8.0,8.0,6.0,6.0,5.0,5.0,4.0,4.0,Chihuahua
+1,https://api-ninjas.com/images/dogs/german_shepherd_dog.jpg,5,3,4,2,2,1,3,4,5,5,5,3,7.0,10.0,26.0,26.0,90.0,70.0,24.0,24.0,65.0,50.0,German Shepherd Dog
+2,https://api-ninjas.com/images/dogs/border_collie.jpg,3,3,3,3,1,1,4,5,3,5,5,4,12.0,15.0,22.0,22.0,55.0,55.0,19.0,19.0,30.0,30.0,Border Collie
+3,https://api-ninjas.com/images/dogs/labrador_retriever.jpg,5,5,4,2,2,1,5,5,3,5,5,3,10.0,12.0,24.5,24.5,80.0,70.0,22.5,22.5,65.0,55.0,Labrador Retriever
+4,https://api-ninjas.com/images/dogs/doberman_pinscher.jpg,5,3,4,1,2,1,4,4,5,5,5,3,10.0,12.0,28.0,28.0,100.0,90.0,26.0,26.0,75.0,60.0,Doberman Pinscher
+5,https://api-ninjas.com/images/dogs/miniature_schnauzer.jpg,5,3,3,4,2,1,3,4,4,5,3,5,12.0,15.0,14.0,14.0,20.0,20.0,12.0,12.0,11.0,11.0,Miniature Schnauzer
+6,https://api-ninjas.com/images/dogs/siberian_husky.jpg,5,5,4,2,1,1,5,5,1,3,5,5,12.0,14.0,23.5,23.5,60.0,50.0,21.0,21.0,45.0,35.0,Siberian Husky
+7,https://api-ninjas.com/images/dogs/golden_retriever.jpg,5,5,4,2,2,1,5,4,3,5,3,1,10.0,12.0,24.0,24.0,75.0,65.0,23.0,23.0,65.0,55.0,Golden Retriever
+8,https://api-ninjas.com/images/dogs/cairn_terrier.jpg,3,3,2,2,1,1,3,4,4,3,3,4,13.0,15.0,10.0,10.0,14.0,13.0,10.0,10.0,14.0,13.0,Cairn Terrier
+9,https://api-ninjas.com/images/dogs/australian_shepherd.jpg,5,3,3,2,1,1,3,4,3,5,5,3,12.0,15.0,23.0,23.0,65.0,55.0,20.0,20.0,50.0,40.0,Australian Shepherd
+10,https://api-ninjas.com/images/dogs/pekingese.jpg,3,3,3,3,1,1,3,4,4,3,3,1,12.0,14.0,9.0,9.0,14.0,14.0,6.0,6.0,7.0,7.0,Pekingese
+11,https://api-ninjas.com/images/dogs/smooth_fox_terrier.jpg,3,3,3,2,1,1,3,4,5,3,4,5,12.0,15.0,15.5,15.5,18.0,17.0,15.5,15.5,18.0,15.0,Smooth Fox Terrier
+12,https://api-ninjas.com/images/dogs/rat_terrier.jpg,5,3,3,2,1,1,5,5,4,5,4,3,12.0,18.0,13.0,13.0,25.0,25.0,10.0,10.0,10.0,10.0,Rat Terrier
+13,https://api-ninjas.com/images/dogs/basenji.jpg,3,3,2,1,1,1,3,3,3,2,4,1,13.0,14.0,17.0,17.0,24.0,22.0,17.0,17.0,24.0,22.0,Basenji
+14,https://api-ninjas.com/images/dogs/boston_terrier.jpg,5,4,2,2,1,1,5,5,3,4,4,2,11.0,13.0,17.0,17.0,25.0,25.0,15.0,15.0,12.0,12.0,Boston Terrier
+15,https://api-ninjas.com/images/dogs/yorkshire_terrier.jpg,5,3,1,5,1,1,5,4,5,4,4,4,11.0,15.0,8.0,8.0,7.0,7.0,7.0,7.0,7.0,7.0,Yorkshire Terrier
+16,https://api-ninjas.com/images/dogs/poodle_(miniature).jpg,5,3,1,4,1,1,5,5,3,5,4,4,10.0,18.0,15.0,15.0,15.0,15.0,10.0,10.0,10.0,10.0,Poodle (Miniature)
+17,https://api-ninjas.com/images/dogs/scottish_terrier.jpg,3,2,2,3,2,1,3,4,5,3,3,4,12.0,12.0,10.0,10.0,22.0,21.0,10.0,10.0,19.0,18.0,Scottish Terrier
+18,https://api-ninjas.com/images/dogs/dachshund.jpg,3,4,2,2,2,2,4,4,4,4,3,5,12.0,16.0,9.0,9.0,32.0,32.0,8.0,8.0,16.0,16.0,Dachshund
+19,https://api-ninjas.com/images/dogs/plott_hound.jpg,0,0,0,0,0,0,0,0,0,0,0,0,12.0,14.0,25.0,25.0,60.0,55.0,20.0,20.0,50.0,40.0,Plott Hound
+20,https://api-ninjas.com/images/dogs/boxer.jpg,5,3,2,2,3,1,4,4,4,4,4,3,10.0,12.0,25.0,25.0,80.0,65.0,23.0,23.0,65.0,50.0,Boxer
+21,https://api-ninjas.com/images/dogs/parson_russell_terrier.jpg,3,5,2,2,1,1,3,4,3,4,5,3,13.0,15.0,14.0,14.0,17.0,17.0,14.0,14.0,13.0,13.0,Parson Russell Terrier
+22,https://api-ninjas.com/images/dogs/australian_cattle_dog.jpg,3,3,3,1,1,1,3,3,4,4,5,1,12.0,16.0,20.0,20.0,50.0,50.0,18.0,18.0,35.0,35.0,Australian Cattle Dog
+23,https://api-ninjas.com/images/dogs/rottweiler.jpg,3,3,3,1,3,1,3,4,5,5,3,1,9.0,10.0,27.0,27.0,135.0,100.0,24.0,24.0,95.0,80.0,Rottweiler
+24,https://api-ninjas.com/images/dogs/american_staffordshire_terrier.jpg,3,3,2,1,1,1,4,3,5,3,3,3,12.0,16.0,19.0,19.0,70.0,55.0,18.0,18.0,55.0,40.0,American Staffordshire Terrier
+25,https://api-ninjas.com/images/dogs/norwich_terrier.jpg,5,3,3,2,1,1,5,4,4,3,4,4,12.0,15.0,10.0,10.0,12.0,12.0,10.0,10.0,12.0,12.0,Norwich Terrier
+26,https://api-ninjas.com/images/dogs/akita.jpg,3,1,3,3,1,1,2,3,5,3,4,2,10.0,14.0,28.0,28.0,130.0,100.0,26.0,26.0,100.0,70.0,Akita
+27,https://api-ninjas.com/images/dogs/bichon_frise.jpg,5,5,1,5,1,1,5,4,2,4,4,3,14.0,15.0,11.5,11.5,18.0,18.0,9.5,9.5,12.0,12.0,Bichon Frise
+28,https://api-ninjas.com/images/dogs/american_staffordshire_terrier.jpg,3,3,2,1,1,1,4,3,5,3,3,3,12.0,16.0,19.0,19.0,70.0,55.0,18.0,18.0,55.0,40.0,American Staffordshire Terrier
+29,https://api-ninjas.com/images/dogs/beagle.jpg,5,5,3,2,1,1,3,4,2,3,4,4,10.0,15.0,16.0,15.0,20.0,30.0,14.0,13.0,15.0,20.0,Beagle
+30,https://api-ninjas.com/images/dogs/maltese.jpg,3,3,1,4,1,1,3,3,4,3,3,3,12.0,15.0,9.0,9.0,8.8,8.8,7.0,7.0,6.6,6.6,Maltese
+31,https://api-ninjas.com/images/dogs/cane_corso.jpg,3,3,2,1,3,1,3,3,5,4,4,3,9.0,12.0,27.5,27.5,110.0,99.0,25.0,25.0,99.0,88.0,Cane Corso
+32,https://api-ninjas.com/images/dogs/american_bulldog.jpg,3,3,2,0,0,1,0,0,0,4,0,1,10.0,12.0,28.0,24.0,100.0,80.0,20.0,20.0,75.0,60.0,American Bulldog
+33,https://api-ninjas.com/images/dogs/catahoula_leopard_dog.jpg,3,3,3,2,2,1,3,3,4,4,5,1,10.0,14.0,24.0,24.0,95.0,95.0,22.0,22.0,50.0,50.0,Catahoula Leopard Dog
+34,https://api-ninjas.com/images/dogs/great_dane.jpg,3,3,3,1,4,1,3,4,5,3,4,3,7.0,10.0,32.0,32.0,175.0,140.0,30.0,30.0,140.0,110.0,Great Dane
+35,https://api-ninjas.com/images/dogs/rhodesian_ridgeback.jpg,5,3,3,2,2,1,3,3,5,4,3,2,10.0,12.0,27.0,27.0,85.0,70.0,25.0,25.0,85.0,70.0,Rhodesian Ridgeback
+36,https://api-ninjas.com/images/dogs/german_pinscher.jpg,3,3,3,1,1,1,3,4,4,5,5,3,12.0,14.0,20.0,20.0,45.0,45.0,17.0,17.0,25.0,25.0,German Pinscher
+37,https://api-ninjas.com/images/dogs/german_longhaired_pointer.jpg,5,4,3,1,2,1,4,4,3,5,4,3,12.0,14.0,28.0,28.0,80.0,80.0,22.0,22.0,55.0,55.0,German Longhaired Pointer
+38,https://api-ninjas.com/images/dogs/shih_tzu.jpg,5,5,1,4,1,1,3,3,3,4,3,3,10.0,18.0,10.5,10.5,16.0,16.0,9.0,9.0,9.0,9.0,Shih Tzu
+39,https://api-ninjas.com/images/dogs/black_and_tan_coonhound.jpg,5,5,3,2,3,1,3,3,2,3,3,4,10.0,12.0,27.0,27.0,110.0,110.0,25.0,25.0,65.0,65.0,Black and Tan Coonhound
+40,https://api-ninjas.com/images/dogs/cocker_spaniel.jpg,5,5,3,4,2,1,4,3,3,4,4,3,10.0,14.0,15.5,15.5,30.0,25.0,14.5,14.5,25.0,20.0,Cocker Spaniel
+41,https://api-ninjas.com/images/dogs/affenpinscher.jpg,3,3,3,3,1,2,5,3,3,3,3,3,12.0,15.0,11.5,11.5,10.0,10.0,9.0,9.0,7.0,7.0,Affenpinscher
+42,https://api-ninjas.com/images/dogs/australian_kelpie.jpg,3,3,3,1,1,1,3,3,4,4,5,1,10.0,13.0,20.0,20.0,50.0,50.0,17.0,17.0,35.0,35.0,Australian Kelpie
+43,https://api-ninjas.com/images/dogs/whippet.jpg,5,5,2,1,1,1,3,4,3,3,4,1,12.0,15.0,22.0,22.0,40.0,40.0,19.0,19.0,25.0,25.0,Whippet
+44,https://api-ninjas.com/images/dogs/chow_chow.jpg,3,2,3,3,3,1,2,3,5,3,3,1,8.0,12.0,20.0,20.0,70.0,70.0,17.0,17.0,45.0,45.0,Chow Chow
+45,https://api-ninjas.com/images/dogs/harrier.jpg,5,5,3,1,2,1,4,4,3,4,4,5,12.0,15.0,21.0,21.0,60.0,60.0,19.0,19.0,45.0,45.0,Harrier
+46,https://api-ninjas.com/images/dogs/lhasa_apso.jpg,3,3,1,3,1,1,3,3,5,3,3,3,12.0,15.0,11.0,11.0,18.0,18.0,10.0,10.0,12.0,12.0,Lhasa Apso
+47,https://api-ninjas.com/images/dogs/american_water_spaniel.jpg,3,3,1,3,1,1,3,3,3,5,3,3,10.0,14.0,18.0,18.0,45.0,40.0,15.0,15.0,30.0,25.0,American Water Spaniel
+48,https://api-ninjas.com/images/dogs/cardigan_welsh_corgi.jpg,4,3,3,2,1,1,4,4,3,4,4,5,12.0,15.0,12.5,12.5,38.0,34.0,10.5,10.5,30.0,25.0,Cardigan Welsh Corgi
+49,https://api-ninjas.com/images/dogs/weimaraner.jpg,5,3,3,2,2,1,3,5,5,5,5,3,10.0,13.0,27.0,27.0,90.0,75.0,25.0,25.0,70.0,55.0,Weimaraner
+50,https://api-ninjas.com/images/dogs/pomeranian.jpg,3,3,2,3,1,1,3,3,4,3,3,4,12.0,16.0,7.0,7.0,7.0,7.0,6.0,6.0,3.0,3.0,Pomeranian
+51,https://api-ninjas.com/images/dogs/pug.jpg,5,4,4,2,1,1,5,5,3,4,3,1,13.0,15.0,13.0,13.0,18.0,18.0,10.0,10.0,14.0,14.0,Pug
+52,https://api-ninjas.com/images/dogs/manchester_terrier_(standard).jpg,4,3,2,2,1,1,3,4,4,4,4,4,15.0,17.0,16.0,16.0,22.0,22.0,15.0,15.0,12.0,12.0,Manchester Terrier (Standard)
+53,https://api-ninjas.com/images/dogs/bullmastiff.jpg,3,3,3,1,3,1,3,3,5,4,4,1,7.0,9.0,27.0,27.0,130.0,120.0,25.0,25.0,110.0,100.0,Bullmastiff
+54,https://api-ninjas.com/images/dogs/basset_hound.jpg,5,5,2,3,4,1,3,3,3,3,2,4,12.0,13.0,15.0,14.0,65.0,65.0,12.0,11.0,40.0,40.0,Basset Hound
+55,https://api-ninjas.com/images/dogs/newfoundland.jpg,5,5,3,2,5,1,5,3,5,3,3,1,9.0,10.0,28.0,28.0,150.0,120.0,28.0,28.0,130.0,100.0,Newfoundland
+56,https://api-ninjas.com/images/dogs/border_terrier.jpg,5,3,2,2,1,1,4,4,3,4,3,3,12.0,15.0,15.0,15.0,15.5,14.0,12.0,12.0,13.0,11.5,Border Terrier
+57,https://api-ninjas.com/images/dogs/great_pyrenees.jpg,3,3,3,2,3,1,3,3,5,3,3,3,10.0,12.0,32.0,32.0,120.0,90.0,27.0,27.0,110.0,80.0,Great Pyrenees
+58,https://api-ninjas.com/images/dogs/dutch_shepherd.jpg,3,3,3,2,2,1,3,4,5,5,5,2,11.0,14.0,24.5,24.5,75.0,75.0,21.5,21.5,42.0,42.0,Dutch Shepherd
+59,https://api-ninjas.com/images/dogs/shetland_sheepdog.jpg,5,5,3,3,1,1,2,5,5,5,4,5,12.0,14.0,16.0,16.0,25.0,25.0,13.0,13.0,15.0,15.0,Shetland Sheepdog
+60,https://api-ninjas.com/images/dogs/pembroke_welsh_corgi.jpg,3,4,4,2,1,1,4,4,5,4,4,4,12.0,13.0,12.0,12.0,31.0,28.0,10.0,10.0,24.0,24.0,Pembroke Welsh Corgi
+61,https://api-ninjas.com/images/dogs/carolina_dog.jpg,3,3,3,1,2,1,3,3,3,3,3,3,12.0,15.0,19.5,19.5,55.0,55.0,17.75,17.75,30.0,30.0,Carolina Dog
+62,https://api-ninjas.com/images/dogs/belgian_malinois.jpg,3,3,3,2,1,1,3,3,4,5,4,3,14.0,16.0,26.0,26.0,80.0,60.0,24.0,24.0,60.0,40.0,Belgian Malinois
+63,https://api-ninjas.com/images/dogs/brittany.jpg,4,4,3,3,1,1,3,4,3,5,5,3,12.0,14.0,20.5,20.5,40.0,40.0,17.5,17.5,30.0,30.0,Brittany
+64,https://api-ninjas.com/images/dogs/miniature_pinscher.jpg,3,4,3,1,1,1,3,4,5,3,5,5,12.0,16.0,12.5,12.5,10.0,10.0,10.0,10.0,8.0,8.0,Miniature Pinscher
+65,https://api-ninjas.com/images/dogs/norfolk_terrier.jpg,5,3,3,2,1,1,5,4,4,3,4,4,12.0,16.0,10.0,10.0,12.0,12.0,9.0,9.0,11.0,11.0,Norfolk Terrier
+66,https://api-ninjas.com/images/dogs/english_foxhound.jpg,5,5,3,1,2,1,4,4,3,4,4,5,10.0,13.0,24.0,24.0,75.0,75.0,24.0,24.0,60.0,60.0,English Foxhound
+67,https://api-ninjas.com/images/dogs/kuvasz.jpg,3,3,3,2,2,1,3,3,5,5,3,3,10.0,12.0,30.0,30.0,115.0,90.0,28.0,28.0,100.0,70.0,Kuvasz
+68,https://api-ninjas.com/images/dogs/french_bulldog.jpg,5,4,3,1,3,1,5,5,3,4,3,1,10.0,12.0,13.0,13.0,28.0,26.0,11.0,11.0,20.0,18.0,French Bulldog
+69,https://api-ninjas.com/images/dogs/bernese_mountain_dog.jpg,5,5,5,3,3,1,4,4,3,4,4,3,7.0,10.0,27.5,27.5,115.0,95.0,25.0,25.0,80.0,70.0,Bernese Mountain Dog
+70,https://api-ninjas.com/images/dogs/irish_terrier.jpg,5,1,2,1,1,1,3,3,5,3,3,3,13.0,15.0,18.0,18.0,27.0,25.0,18.0,18.0,27.0,25.0,Irish Terrier
+71,https://api-ninjas.com/images/dogs/japanese_chin.jpg,3,5,3,2,1,1,3,3,3,3,3,2,10.0,12.0,11.0,11.0,11.0,11.0,8.0,8.0,7.0,7.0,Japanese Chin
+72,https://api-ninjas.com/images/dogs/smooth_fox_terrier.jpg,3,3,3,2,1,1,3,4,5,3,4,5,12.0,15.0,15.5,15.5,18.0,17.0,15.5,15.5,18.0,15.0,Smooth Fox Terrier
+73,https://api-ninjas.com/images/dogs/belgian_tervuren.jpg,3,3,3,2,1,1,3,3,4,5,4,3,12.0,14.0,26.0,26.0,75.0,60.0,24.0,24.0,55.0,45.0,Belgian Tervuren
+74,https://api-ninjas.com/images/dogs/nova_scotia_duck_tolling_retriever.jpg,5,4,3,2,2,1,3,5,3,5,5,2,12.0,14.0,21.0,21.0,50.0,50.0,18.0,18.0,35.0,35.0,Nova Scotia Duck Tolling Retriever
+75,https://api-ninjas.com/images/dogs/field_spaniel.jpg,5,4,3,2,2,1,4,3,3,5,3,3,12.0,13.0,18.0,18.0,50.0,50.0,18.0,18.0,35.0,35.0,Field Spaniel
+76,https://api-ninjas.com/images/dogs/pharaoh_hound.jpg,3,5,3,2,1,1,3,3,3,4,4,3,12.0,14.0,25.0,25.0,55.0,55.0,23.0,23.0,45.0,45.0,Pharaoh Hound
+77,https://api-ninjas.com/images/dogs/saluki.jpg,3,3,2,1,1,1,3,3,1,3,4,3,10.0,17.0,28.0,28.0,65.0,65.0,23.0,23.0,40.0,40.0,Saluki
+78,https://api-ninjas.com/images/dogs/west_highland_white_terrier.jpg,5,3,3,3,1,1,4,5,5,3,4,5,13.0,15.0,11.0,11.0,20.0,20.0,11.0,11.0,15.0,15.0,West Highland White Terrier
+79,https://api-ninjas.com/images/dogs/treeing_walker_coonhound.jpg,5,5,3,1,3,1,3,4,3,5,5,4,12.0,13.0,27.0,27.0,70.0,70.0,22.0,22.0,50.0,50.0,Treeing Walker Coonhound
+80,https://api-ninjas.com/images/dogs/standard_schnauzer.jpg,5,3,1,3,3,1,3,4,5,5,3,3,13.0,16.0,19.5,19.5,50.0,45.0,18.5,18.5,35.0,30.0,Standard Schnauzer
+81,https://api-ninjas.com/images/dogs/boykin_spaniel.jpg,5,5,3,3,1,1,3,4,3,4,4,3,10.0,15.0,18.0,18.0,40.0,35.0,15.5,15.5,30.0,25.0,Boykin Spaniel
+82,https://api-ninjas.com/images/dogs/soft_coated_wheaten_terrier.jpg,5,3,1,4,2,1,3,3,3,3,4,3,12.0,14.0,19.0,19.0,40.0,35.0,18.0,18.0,35.0,30.0,Soft Coated Wheaten Terrier
+83,https://api-ninjas.com/images/dogs/finnish_spitz.jpg,5,4,3,2,2,1,3,3,3,3,5,5,13.0,15.0,20.0,20.0,33.0,28.0,17.5,17.5,25.0,20.0,Finnish Spitz
+84,https://api-ninjas.com/images/dogs/havanese.jpg,5,5,2,3,1,1,5,5,3,4,3,4,14.0,16.0,11.5,11.5,13.0,13.0,8.5,8.5,7.0,7.0,Havanese
+85,https://api-ninjas.com/images/dogs/dogo_argentino.jpg,3,3,4,1,3,1,4,4,5,5,5,3,9.0,15.0,27.0,27.0,100.0,100.0,24.0,24.0,80.0,80.0,Dogo Argentino
+86,https://api-ninjas.com/images/dogs/beauceron.jpg,3,3,4,3,1,1,2,3,4,3,5,3,10.0,12.0,27.5,27.5,110.0,110.0,25.5,25.5,70.0,70.0,Beauceron
+87,https://api-ninjas.com/images/dogs/american_english_coonhound.jpg,3,5,2,1,1,1,3,3,3,3,4,4,11.0,12.0,26.0,26.0,65.0,65.0,24.0,24.0,45.0,45.0,American English Coonhound
+88,https://api-ninjas.com/images/dogs/canaan_dog.jpg,3,3,4,2,1,1,3,3,4,4,3,5,12.0,15.0,24.0,24.0,55.0,45.0,20.0,20.0,45.0,35.0,Canaan Dog
+89,https://api-ninjas.com/images/dogs/greyhound.jpg,3,4,2,1,1,1,3,3,3,3,4,3,10.0,13.0,30.0,30.0,70.0,65.0,28.0,28.0,65.0,60.0,Greyhound
+90,https://api-ninjas.com/images/dogs/ibizan_hound.jpg,3,5,2,1,1,1,3,4,3,3,5,3,11.0,14.0,27.5,27.5,50.0,45.0,23.5,23.5,50.0,45.0,Ibizan Hound
+91,https://api-ninjas.com/images/dogs/bull_terrier.jpg,3,1,3,2,1,1,4,4,3,3,4,3,12.0,13.0,22.0,22.0,70.0,70.0,21.0,21.0,50.0,50.0,Bull Terrier
+92,https://api-ninjas.com/images/dogs/tibetan_terrier.jpg,3,3,3,3,2,1,3,3,4,3,4,3,15.0,16.0,17.0,17.0,31.0,31.0,14.0,14.0,18.0,18.0,Tibetan Terrier
+93,https://api-ninjas.com/images/dogs/english_springer_spaniel.jpg,3,4,3,2,3,1,4,4,3,5,4,3,12.0,14.0,20.0,20.0,50.0,40.0,20.0,20.0,50.0,40.0,English Springer Spaniel
+94,https://api-ninjas.com/images/dogs/jindo.jpg,3,3,3,2,1,1,3,3,5,4,4,3,14.0,14.0,22.0,22.0,50.0,50.0,18.0,18.0,30.0,30.0,Jindo
+95,https://api-ninjas.com/images/dogs/dalmatian.jpg,3,3,4,2,2,1,4,4,4,4,4,3,11.0,13.0,24.0,24.0,70.0,70.0,19.0,19.0,45.0,45.0,Dalmatian
+96,https://api-ninjas.com/images/dogs/shiba_inu.jpg,3,3,3,2,1,1,3,3,5,2,3,3,13.0,16.0,16.5,16.5,23.0,17.0,14.5,14.5,23.0,17.0,Shiba Inu
+97,https://api-ninjas.com/images/dogs/bloodhound.jpg,3,3,3,2,5,1,3,3,2,4,3,5,10.0,12.0,27.0,27.0,110.0,100.0,25.0,25.0,90.0,80.0,Bloodhound
+98,https://api-ninjas.com/images/dogs/welsh_terrier.jpg,5,3,2,3,2,1,5,4,4,4,4,4,12.0,15.0,15.0,15.0,22.0,22.0,15.0,15.0,20.0,20.0,Welsh Terrier
+99,https://api-ninjas.com/images/dogs/american_foxhound.jpg,5,5,3,1,1,1,3,3,3,3,4,5,11.0,13.0,25.0,25.0,70.0,65.0,22.0,22.0,65.0,60.0,American Foxhound
+100,https://api-ninjas.com/images/dogs/samoyed.jpg,5,3,3,3,1,1,5,5,4,4,4,5,12.0,14.0,23.5,23.5,65.0,50.0,21.0,21.0,45.0,35.0,Samoyed
+101,https://api-ninjas.com/images/dogs/dogue_de_bordeaux.jpg,3,3,4,1,5,1,3,3,5,4,3,3,5.0,8.0,23.27,23.27,140.0,140.0,23.27,23.27,120.0,120.0,Dogue de Bordeaux
+102,https://api-ninjas.com/images/dogs/vizsla.jpg,5,4,3,2,2,1,4,5,3,5,5,3,12.0,14.0,24.0,24.0,60.0,55.0,22.0,22.0,55.0,44.0,Vizsla
+103,https://api-ninjas.com/images/dogs/bullmastiff.jpg,3,3,3,1,3,1,3,3,5,4,4,1,7.0,9.0,27.0,27.0,130.0,120.0,25.0,25.0,110.0,100.0,Bullmastiff
