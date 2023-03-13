@@ -60,7 +60,8 @@ def get_data(animal_type):
     data['breed']= get_breed(data['breed'])
 
 
-    data= separate_dataframe(data, 'animal_type', animal_type)
+    data = separate_dataframe(data,'animal_type', animal_type)
+    
     return data
 
 
