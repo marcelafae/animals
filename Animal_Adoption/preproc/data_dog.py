@@ -12,7 +12,9 @@ def get_data_dogs():
     """
     # load the dataset
     csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
+    breed_path = os.path.join("../../raw_data", "breeds.csv")
     data= pd.read_csv(os.path.join(csv_path))
+    breed_data = pd.read_csv(os.path.join(breed_path), index_col=0)
 
     data['date_of_birth'] = pd.to_datetime(data['date_of_birth'])
     data['outcome_datetime'] = pd.to_datetime(data['outcome_datetime'])
@@ -33,6 +35,11 @@ def get_data_dogs():
         'outcome_hour', 'age_upon_intake_(days)',
         'intake_monthyear', 'outcome_datetime', 'outcome_type'
         ], axis=1, inplace= True)
+    data['breed'] = get_breed_dogs(data['breed'])
+    data.dropna(inplace=True)
+    data = common_uncommon_dogs(data)
+    data = split_sex_from_castrate(data)
+    data = data.merge(breed_data.reset_index(names='breed'), on='breed', how='outer')
     return data
 
 
