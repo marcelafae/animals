@@ -125,6 +125,28 @@ def get_breeds_info_from_dataframe(df):
    # print(breed_info)
     #return breed_info
 
+def common_uncommon_dogs (df: pd.DataFrame) -> pd.DataFrame:
+    """
+    This function takes our final df as input and replaces the 6 most common values of the 'breed'
+    column with the string 'common breed', and all other values with the string 'uncommon breed' in a separated column- like richard suggested
+    """
+    breed_counts = df['breed'].value_counts()
+    common_breeds = []
+    uncommon_breeds = []
+    for breed in breed_counts.index:
+        if breed_counts[breed] >= 6:
+            common_breeds.append(breed)
+        else:
+            uncommon_breeds.append(breed)
+    breed_type = []
+    for breed in df['breed']:
+        if breed in common_breeds:
+            breed_type.append('common breed')
+        else:
+            breed_type.append('uncommon breed')
+    df['breed_type'] = breed_type
+    return df
+
 
 
 # if __name__ == "__main__":
