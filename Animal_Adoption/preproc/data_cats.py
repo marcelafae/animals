@@ -1,8 +1,6 @@
 import os
 import pandas as pd
 
-
-
 def get_merge_cats():
     """"function to merge the aac_shelter_cat_outcome_eng.csv with our clean dataframe"""
      #load both dataframes
@@ -38,6 +36,7 @@ def select_and_rename_columns(df):
 
     # return new dataframe with selected and renamed columns
     return df_selected
+
 
 
 
