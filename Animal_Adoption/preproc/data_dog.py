@@ -11,8 +11,9 @@ def get_data_dogs():
     Its values should be pandas.DataFrames loaded from csv files
     """
     # load the dataset
-    csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
-    breed_path = os.path.join("../../raw_data", "breeds.csv")
+    root_dir = os.path.dirname(os.path.dirname(__file__))
+    csv_path = os.path.join(root_dir, "../raw_data", "aac_intakes_outcomes.csv")
+    breed_path = os.path.join(root_dir, "../raw_data", "breeds.csv")
     data= pd.read_csv(os.path.join(csv_path))
     breed_data = pd.read_csv(os.path.join(breed_path), index_col=0)
 
