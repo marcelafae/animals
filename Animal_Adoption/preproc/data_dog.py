@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import requests
+pd.set_option('display.max_rows', None)
 from .preproc_colors import *
 
 #only gets the data from the acc_intakes_outcomes, transform some columsn into datetime and drop useless columns
@@ -89,12 +90,16 @@ def breeds_separated_dogs(in_breed: str) -> str:
     breed_list = in_breed.split('/')
     return breed_list[0]
 
-def split_sex_from_castrate(data: pd.DataFrame)-> pd.DataFrame:
+
 # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
+def split_sex_from_castrate(data: pd.DataFrame)-> pd.DataFrame:
+    data.dropna(inplace=True)
     data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
     data['sex']= data.sex_upon_outcome.map(lambda x : x.split(" ")[-1])
     return data
 
+
+# gets the dog breed info from the API in the correct way
 def get_breeds_info_from_dataframe(df):
     dic_breed_dic ={}
     fail_breed_list = []
