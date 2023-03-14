@@ -12,12 +12,6 @@ def breed_2classes(df, column_name):
     return df#.reset_index(drop=True)
 
 # relable the colum 'outcome_type' into column 'outcome_type_2classes' with values 'adopted' and 'not adopted'   
-def outcome_type_2classes(df,col):
-    classes_2= {'Return to Owner': 'not adopted', ['Transfer', 'Missing', 'Rto-Adopt', 'Died', 'Disposal', 'Adoption', 'Euthanasia']: 'adopted'}
-    df['outcome_type_2classes']= df[col].map(classes_2)
-    return df
-
-# relable the colum 'outcome_type' into column 'outcome_type_2classes' with values 'adopted' and 'not adopted'   
 def outcome_type_2classes(df, column_name):
     classes_2= []
     for value in df.loc[:, column_name]:

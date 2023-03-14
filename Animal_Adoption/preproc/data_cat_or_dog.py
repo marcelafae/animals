@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 from preproc.data_all import get_data_all
-from preproc.preproc_colors import perform_all_color_cleaning
-from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
+# from preproc.preproc_colors import perform_all_color_cleaning
+# from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
 
 # nothing from and import from the data_dog.py because it is already inside 
 
