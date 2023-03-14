@@ -46,7 +46,7 @@ def get_data(animal_type):
         csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
         data_cats= pd.read_csv(os.path.join(csv_path_cats))
         #merge to dataframes into one with only cats but all information
-        data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
+        data_cats = data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
          # call the second function 'select_and_rename_columns' into the first function
         data_cats = select_and_rename_columns(data_cats)
         return data_cats
