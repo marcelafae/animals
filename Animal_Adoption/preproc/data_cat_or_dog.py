@@ -52,5 +52,5 @@ def get_data(animal_type):
         return data_cats
     else:
         return data
-    return data
+    #return data
 
