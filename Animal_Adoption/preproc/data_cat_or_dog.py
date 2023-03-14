@@ -48,7 +48,7 @@ def get_data(animal_type):
         #merge to dataframes into one with only cats but all information
         data_cats = data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
          # call the second function 'select_and_rename_columns' into the first function
-        data_cats = select_and_rename_columns(data_cats)
+        data_cats =select_and_rename_columns(data_cats)
         return data_cats
     else:
         return data
