@@ -16,14 +16,15 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+#https://animal-api-gzsqtwobpa-lz.a.run.app/predict?age_upon_intake_y=0.08333333333333333&animal_type=Dog&intake_condition=Normal&breed=Common&sex=0&sex_type=0&color=Black
+
 @app.get("/predict")
 def predict(age_upon_intake_y: float,
             animal_type: str,
             breed: str,
             intake_condition: str,
             sex: str,
-            sex_type: str,
-            color: str):
+            sex_type: str): #I removed 'color: str' but should I???
 
     """"    possivelmente é o que tem q acompanhar a linha 8 pra faster predictions
     prediction = app.state.model.predict(input_data)
