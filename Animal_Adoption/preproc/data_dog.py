@@ -4,31 +4,23 @@ import numpy as np
 import requests
 from .preproc_colors import *
 
+#only gets the data from the acc_intakes_outcomes, transform some columsn into datetime and drop useless columns
 def get_data_dogs():
     """
     Its values should be pandas.DataFrames loaded from csv files
     """
     # load the dataset
-    #root_dir = os.path.dirname(os.path.dirname(__file__))
     csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
     data= pd.read_csv(os.path.join(csv_path))
 
-    # Drop duplicates in place
-    data.drop_duplicates(inplace=True)
-
-    # convert several columns in another type
     data['date_of_birth'] = pd.to_datetime(data['date_of_birth'])
     data['outcome_datetime'] = pd.to_datetime(data['outcome_datetime'])
     data['intake_datetime'] = pd.to_datetime(data['intake_datetime'])
 
-    data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
     data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
     data.drop(data[data['animal_type'] == 'Other'].index, inplace = True)
     data.drop(data[data['animal_type'] == 'Cat'].index, inplace = True)
- # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
-    data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
-    data['sex']= data.sex_upon_outcome.map(lambda x : x.split(" ")[-1])
     data.drop([
         'outcome_subtype', 'animal_id_outcome','outcome_number',
         'found_location', 'animal_id_intake',
@@ -49,7 +41,6 @@ def get_breed_dogs(series: pd.Series) -> pd.Series:
        ## lowercasing
         d = d.lower()
     # remove the word 'mix', 'toy', etc...->
-        d = d.replace("toy", "")
         d = d.replace("rhod", "")
         d = d.replace("mix", "")
         d = d.replace("eng", "")
@@ -70,7 +61,7 @@ def get_breed_dogs(series: pd.Series) -> pd.Series:
         d = d.replace("bluetick hound", "Bluetick Coonhound")
         d = d.replace("standard poodle", "Poodle (Standard)")
         d = d.replace("miniature poodle", "Poodle (Miniature)")
-        d = d.replace("miniature poodle", "Poodle (Miniature)")
+        d = d.replace("toy poodle", "Poodle (Toy)")
         d = d.replace("german  pointer", "German Shorthaired Pointer")
         d = d.replace("wire hair fox terrier", "Wire Fox Terrier")
         d = d.replace("cavalier span", "Cavalier King Charles Spaniel")
@@ -85,61 +76,31 @@ def get_breed_dogs(series: pd.Series) -> pd.Series:
         d = d.replace("landseer", "Newfoundland")
         d = d.replace("schnauzer giant", "Giant Schnauzer")
 
-
         ## remove whitespaces
         d = d.strip()
         return d
     series = series.map(cleaning)
 
-
-    # breed_map = {
-    #     "small": ["pit bull", "chihuahua","terrier", "dachshund", "miniature poodle", "beagle", "miniature schnauzer", "bulldog", "shih tzu", "pug", "australian kelpie", "maltese", "chow chow", "spaniel", "cardigan welsh corgi","miniature pinscher", "chinese sharpei", "queensland heeler", "pomeranian", "lhasa apso"],
-    #     "big": ["retriever", "shepherd", "australian cattle dog", "collie", "hound", "boxer", "catahoula", "siberian husky", "great pyrenees","rottweiler", "pointer", "staffordshire", "black mouth cur", "doberman pinsch", "blue lacy"],
-    #     "short_hair": ["domestic shorthair", "shorthair", "short hair", "american shorthair", "siamese"],
-    #     "medium_hair": ["domestic medium hair", "medium hair"],
-    #     "long_hair": ["domestic longhair", "long hair", "longhair"],
-    #     "uncommon": get_uncommon_breeds(series),
-    # }
-
-    # for key, val in breed_map.items():
-    #     series = replace_breeds(val, key, series)
-    #     # series = series.map(uncommon???)
     return series
 
-    # def unknown(d):
-
-def replace_breeds_dogs(breed_list: list,
-                   new_breed: str,
-                   series: pd.Series) -> pd.Series:
-    def helper(breed, new_breed):
-        def inner(x):
-            return new_breed if breed in x else x
-        return inner
-    series = series.copy()
-    for breed in breed_list:
-        mapper = helper(breed, new_breed)
-        series = series.map(mapper)
-    return series
 
 # delete the separated breeds-> /
-def breeds_separated_dogs(in_breed: pd.Series) -> pd.Series:
-    breed_list = []
-    for row in in_breed:
-        breed_list += row.split('/')
-    breed_list = np.array([breed.strip() for breed in breed_list])
-    return pd.Series(breed_list)
+def breeds_separated_dogs(in_breed: str) -> str:
+    breed_list = in_breed.split('/')
+    return breed_list[0]
 
-def get_uncommon_breeds_dogs(breeds: pd.Series) -> list:
-    return breeds_separated_dogs(breeds).value_counts()[44:].index
-
-
+def split_sex_from_castrate(data: pd.DataFrame)-> pd.DataFrame:
+# relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
+    data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
+    data['sex']= data.sex_upon_outcome.map(lambda x : x.split(" ")[-1])
+    return data
 
 def get_breeds_info_from_dataframe(df):
     dic_breed_dic ={}
     fail_breed_list = []
     for breed_name in df['breed'].unique():
         api_url = 'https://api.api-ninjas.com/v1/dogs?name={}'.format(breed_name)
-        response = requests.get(api_url, headers={'X-Api-Key': 'T1uOOYf5geCLwn8dpS8SMQ==HaH3Ky5bHqTqh3IS'})
+        response = requests.get(api_url, headers={'X-Api-Key': os.environ.get("API_KEY", "")})
         response_json = response.json()
         # print(response_json
         # if response_json:
