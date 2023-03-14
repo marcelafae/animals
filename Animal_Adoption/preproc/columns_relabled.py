@@ -9,7 +9,7 @@ def breed_2classes(df, column_name):
         else:
             breeds.append('not mixed')
     df['breed_2classes'] = breeds
-    return df#.reset_index(drop=True)
+    return df
 
 # relable the colum 'outcome_type' into column 'outcome_type_2classes' with values 'adopted' and 'not adopted'   
 def outcome_type_2classes(df, column_name):
