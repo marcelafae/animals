@@ -11,7 +11,7 @@ def get_merge_cats():
     data.drop(data[data['animal_type'] != 'Cat'].index, inplace = True)
 
     #merge to dataframes into one with only cats but all information
-    data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
+    data_cats = data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
     data_cats = select_and_rename_columns(data_cats)
     return data_cats
 
@@ -21,7 +21,12 @@ def select_and_rename_columns(df):
     columns_to_keep = ['animal_id','animal_type_x', 'breed_x', 'color_y', 'intake_condition', 'intake_type',
                        'sex_upon_intake', 'age_upon_intake_(years)', 'intake_datetime',
                        'time_in_shelter_days', 'Cat/Kitten (outcome)', 'cfa_breed', 'domestic_breed',
-                       'sex_y', 'Spay/Neuter', 'breed_y']
+                       'sex_y', 'Spay/Neuter', 'breed_y', 'outcome_type_2classes',
+                        'time_in_shelter_days_round', 'time_in_shelter_class',
+                        'time_in_shelter_days_round_8classes',
+                        'time_in_shelter_days_round_2classes', 'intake_condition_2classes',
+                        'color_3classes'
+    ]
 
     # select columns and rename them
     df_selected = df[columns_to_keep].rename(columns={'animal_type_x': 'animal_type',
