@@ -140,7 +140,7 @@ if st.button('Click here'):
         response = requests.get(url_local, params=params)
         # st.write(response)
         # st.write(response.json())
-        days = response.json()['days_in_shelter']
+        days = round(response.json()['days_in_shelter'], 1)
 
         st.write(f'The animal will stay around {days} days')
         # if response.json()['days_in_shelter'] == 0:

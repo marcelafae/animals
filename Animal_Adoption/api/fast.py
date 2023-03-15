@@ -46,7 +46,7 @@ def predict(age_upon_intake_y: float,
 
     print(X_pred)
 
-    file = open('/Animal_Adoption/api/pipeline_best_model.pkl','rb')
+    file = open('./Animal_Adoption/api/pipeline_best_model.pkl','rb')
     pipeline = pickle.load(file)
     print(pipeline.feature_names_in_)
     # assert model is not None
