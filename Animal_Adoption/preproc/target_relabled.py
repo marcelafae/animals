@@ -2,7 +2,7 @@ import pandas as pd
 
 
 # relabled column 'time_in_shelter_days_round' into column 'time_in_shelter_days_round_5classes' with values 'several hours', "between 1 and 5 days"...
-def time_in_shelter_days_round_5classes(df, column_name):
+def time_in_shelter_days_round_8classes(df, column_name):
     classes_5= []
     for value in df.loc[:, column_name]:
         if 0 <= value < 1:
@@ -21,7 +21,7 @@ def time_in_shelter_days_round_5classes(df, column_name):
             classes_5.append('between 26 and 30 days')
         else:
             classes_5.append('higher than 30 days')
-    df['time_in_shelter_days_round_5classes']= classes_5
+    df['time_in_shelter_days_round_8classes']= classes_5
     return df
 
 # relabled column 'time_in_shelter_days_round' into column 'time_in_shelter_days_round_2classes' with values 'one week' and 'more than one week'
