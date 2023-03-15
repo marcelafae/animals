@@ -34,12 +34,16 @@ def get_data_all():
         'age_upon_outcome_(years)', 'outcome_month',
         'outcome_year', 'outcome_monthyear', 'outcome_weekday',
         'outcome_hour', 'outcome_datetime', 'age_upon_intake_(days)',
-        'intake_monthyear'
+        'intake_monthyear', 'intake_month', 'intake_year', 'intake_weekday', 'intake_hour'
         ], axis=1, inplace= True)
     data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
     data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
     data.drop(data[data['animal_type'] == 'Other'].index, inplace = True)
+    
+    # drop the values more than once in the shelter in the column intake_number
+    # remain the animals with an intake_number equals 1
+    data.drop(data[data['intake_number'] > 1].index, inplace = True)
 
     # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
     data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
