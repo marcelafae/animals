@@ -1,21 +1,18 @@
 import os
 import pandas as pd
-
+from .data_all import get_data_all
 def get_merge_cats():
     """"function to merge the aac_shelter_cat_outcome_eng.csv with our clean dataframe"""
      #load both dataframes
-
-    csv_path = os.path.join("../../raw_data", "aac_intakes_outcomes.csv")
-    data= pd.read_csv(os.path.join(csv_path))
+    data= get_data_all()
     csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
     data_cats= pd.read_csv(os.path.join(csv_path_cats))
     #drop all dogs from main dataframe
-    data.drop(data[data['animal_type'] == 'Dog'].index, inplace = True)
+    data.drop(data[data['animal_type'] != 'Cat'].index, inplace = True)
 
     #merge to dataframes into one with only cats but all information
     data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
-
-
+    data_cats = select_and_rename_columns(data_cats)
     return data_cats
 
 #keep only the useful columns and rename them

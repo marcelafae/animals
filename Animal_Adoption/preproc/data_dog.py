@@ -4,6 +4,7 @@ import numpy as np
 import requests
 pd.set_option('display.max_rows', None)
 from .preproc_colors import *
+from .data_all import get_data_all
 
 #only gets the data from the acc_intakes_outcomes, transform some columsn into datetime and drop useless columns
 def get_data_dogs():
@@ -12,30 +13,13 @@ def get_data_dogs():
     """
     # load the dataset
     root_dir = os.path.dirname(os.path.dirname(__file__))
-    csv_path = os.path.join(root_dir, "../raw_data", "aac_intakes_outcomes.csv")
     breed_path = os.path.join(root_dir, "../raw_data", "breeds.csv")
-    data= pd.read_csv(os.path.join(csv_path))
+    data= get_data_all()
     breed_data = pd.read_csv(os.path.join(breed_path), index_col=0)
 
-    data['date_of_birth'] = pd.to_datetime(data['date_of_birth'])
-    data['outcome_datetime'] = pd.to_datetime(data['outcome_datetime'])
-    data['intake_datetime'] = pd.to_datetime(data['intake_datetime'])
-
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
-    data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
-    data.drop(data[data['animal_type'] == 'Other'].index, inplace = True)
-    data.drop(data[data['animal_type'] == 'Cat'].index, inplace = True)
-    data.drop([
-        'outcome_subtype', 'animal_id_outcome','outcome_number',
-        'found_location', 'animal_id_intake',
-        'age_upon_outcome_age_group', 'age_upon_intake_age_group',
-        'dob_year', 'dob_month', 'dob_monthyear', "age_upon_outcome",
-        'age_upon_intake_(days)', 'count', 'age_upon_outcome_(days)',
-        'age_upon_outcome_(years)', 'outcome_month',
-        'outcome_year', 'outcome_monthyear', 'outcome_weekday',
-        'outcome_hour', 'age_upon_intake_(days)',
-        'intake_monthyear', 'outcome_datetime', 'outcome_type'
-        ], axis=1, inplace= True)
+    data.drop(data[data['animal_type'] != 'Dog'].index, inplace = True)
+
     data['breed'] = get_breed_dogs(data['breed'])
     data.dropna(inplace=True)
     data = common_uncommon_dogs(data)
@@ -66,7 +50,7 @@ def get_breed_dogs(series: pd.Series) -> pd.Series:
 
         ## fix the breeds for the api
         d = d.replace("pitbull", "American Staffordshire Terrier")
-        d = d.replace("patterdale terr", "patterdale Terrier")
+        d = d.replace("patterdale terr", "Patterdale Terrier")
         d = d.replace("bluetick hound", "Bluetick Coonhound")
         d = d.replace("standard poodle", "Poodle (Standard)")
         d = d.replace("miniature poodle", "Poodle (Miniature)")
@@ -74,9 +58,9 @@ def get_breed_dogs(series: pd.Series) -> pd.Series:
         d = d.replace("german  pointer", "German Shorthaired Pointer")
         d = d.replace("wire hair fox terrier", "Wire Fox Terrier")
         d = d.replace("cavalier span", "Cavalier King Charles Spaniel")
-        d = d.replace("jack russell terrier", "terrier")
-        d = d.replace("st. bernard rough coat", "saint bernard")
-        d = d.replace("st. bernard smooth coat", "saint bernard")
+        d = d.replace("jack russell terrier", "Terrier")
+        d = d.replace("st. bernard rough coat", "Saint Bernard")
+        d = d.replace("st. bernard smooth coat", "Saint Bernard")
         d = d.replace("flat coat retriever", "Flat-Coated Retriever")
         d = d.replace("tan hound", "Black and Tan Coonhound")
         d = d.replace("redbone hound", "Redbone Coonhound")
