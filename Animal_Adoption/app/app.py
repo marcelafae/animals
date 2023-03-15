@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import os
 import pickle
+import pandas as pd
 
 curr_path = os.path.dirname(__file__)
 
@@ -94,7 +95,10 @@ else:
     months = col2.number_input('Months',min_value = 0, max_value = 11,step=1,value=1)
 
 age_upon_intake_years = years+ months/12
-breed = col3.selectbox("Breed",('Common', 'Uncommon'))
+root_dir = os.path.dirname(os.path.dirname(__file__))
+breed_path = os.path.join(root_dir, "../raw_data", "breeds.csv")
+breed_tuple = pd.read_csv(os.path.join(breed_path), index_col=0).index
+breed = col3.selectbox("Breed", breed_tuple)
 
 
 st.write("### Animal Characteristics")
