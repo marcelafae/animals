@@ -3,11 +3,11 @@ import os
 import pandas as pd
 import numpy as np
 from .preproc_colors import perform_all_color_cleaning
-from preproc.columns_relabled import breed_2classes
-from preproc.columns_relabled import outcome_type_2classes
-from preproc.columns_relabled import intake_condition_2classes
-from preproc.columns_relabled import color_3classes
-from preproc.target_relabled import time_in_shelter_days_round_2classes, time_in_shelter_days_round_5classes
+from .columns_relabled import breed_2classes
+from .columns_relabled import outcome_type_2classes
+from .columns_relabled import intake_condition_2classes
+from .columns_relabled import color_3classes
+from .target_relabled import time_in_shelter_days_round_2classes, time_in_shelter_days_round_8classes
 
 # nothing from and import from the data_dog.py because it is already inside
 
@@ -34,12 +34,16 @@ def get_data_all():
         'age_upon_outcome_(years)', 'outcome_month',
         'outcome_year', 'outcome_monthyear', 'outcome_weekday',
         'outcome_hour', 'outcome_datetime', 'age_upon_intake_(days)',
-        'intake_monthyear'
+        'intake_monthyear', 'intake_month', 'intake_year', 'intake_weekday', 'intake_hour'
         ], axis=1, inplace= True)
     data.dropna(inplace=True)
     # drop the values 'Bird' and 'Other' in the column 'animal_type'
     data.drop(data[data['animal_type'] == 'Bird'].index, inplace = True)
     data.drop(data[data['animal_type'] == 'Other'].index, inplace = True)
+    
+    # drop the values more than once in the shelter in the column intake_number
+    # remain the animals with an intake_number equals 1
+    data.drop(data[data['intake_number'] > 1].index, inplace = True)
 
     # relabled colums: split the column 'sex_upon_outcome' into a column 'sex' and a column 'sex_type'
     data['sex_type']= data.sex_upon_outcome.map(lambda x : x.split(" ")[0])
@@ -53,7 +57,7 @@ def get_data_all():
     data['color']= perform_all_color_cleaning(data['color'])
     # data['color_new']= data.
 
-    
+
     # relabled column 'breed_new' with values 'small', 'big', 'uncommon'
     data['breed_new']= get_breed(data['breed'])
     # relabled column 'breed_mix_nonmix' with values 'mix' and 'non_mix'
@@ -66,14 +70,14 @@ def get_data_all():
     # relabled columns: time_in_shelter, mean is 17 days
     data['time_in_shelter_days_round']= data['time_in_shelter_days'].apply(lambda x: round(x))
     data['time_in_shelter_class']= data['time_in_shelter_days'].apply(classify_value)
-    # 'time_in_shelter_days_5' -> 5 classes 
-    data= time_in_shelter_days_round_5classes(data, 'time_in_shelter_days_round')
+    # 'time_in_shelter_days_5' -> 5 classes
+    data= time_in_shelter_days_round_8classes(data, 'time_in_shelter_days_round')
     # 'time_in_shelter_days_2' -> 2 classes (one week, more than one week)
     data= time_in_shelter_days_round_2classes(data,'time_in_shelter_days_round')
-    
+
     # relabled column: 'intake_condition' into 'intake_condition_2classes with the values 'normal' and 'not normal'
     data = intake_condition_2classes(data,'intake_condition')
-    
+
     data= color_3classes(data, 'color')
     return data
 
@@ -142,5 +146,3 @@ def breeds_separated(in_breed: pd.Series) -> pd.Series:
 
 def get_uncommon_breeds(breeds: pd.Series) -> list:
     return breeds_separated(breeds).value_counts()[44:].index
-
-
