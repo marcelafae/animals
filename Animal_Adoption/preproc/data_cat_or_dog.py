@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from preproc.data_all import get_data_all
+from preproc.data_cats import get_merge_cats
 from preproc.preproc_colors import perform_all_color_cleaning
 from preproc.preproc_intake_conditions import fix_age, drop_under_8_aged
 
@@ -43,10 +44,7 @@ def get_data(animal_type):
     
     # Challenge to merge together
     if animal_type == "Cat":
-        csv_path_cats = os.path.join("../../raw_data", "aac_shelter_cat_outcome_eng.csv")
-        data_cats= pd.read_csv(os.path.join(csv_path_cats))
-        #merge to dataframes into one with only cats but all information
-        data_cats.merge(data, left_on='animal_id', right_on='animal_id_outcome')
+        data_cats= get_merge_cats()
          # call the second function 'select_and_rename_columns' into the first function
         data_cats = select_and_rename_columns(data_cats)
         return data_cats
