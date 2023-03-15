@@ -1,9 +1,10 @@
 from sklearn.base import TransformerMixin, BaseEstimator
+from sklearn.feature_extraction.text import CountVectorizer
+import pandas as pd
 
 class ColorTransformer(TransformerMixin, BaseEstimator):
 
     def __init__(self):
-        super()
         self.vectorizer = CountVectorizer()
 
     def fit(self, X, y=None):

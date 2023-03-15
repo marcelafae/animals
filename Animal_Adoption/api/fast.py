@@ -16,37 +16,39 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-# example url http://127.0.0.1:8000/predict?vgg_cat_or_dog=Cat&vgg_color=Black&vgg_breed=Sheperd&sex=Female&condition=Normal&age_animal=2&castraded=true
+#https://animal-api-gzsqtwobpa-lz.a.run.app/predict?age_upon_intake_y=0.08333333333333333&animal_type=Dog&intake_condition=Normal&breed=Common&sex=0&sex_type=0&color=Black
+
 @app.get("/predict")
-def predict(vgg_cat_or_dog: str,  # 'Cat' or 'Dog' (from vgg)
-            vgg_color: str,    # 'Black' // color of the animal (from vgg)
-            vgg_breed: str,     # 'Sheperd' // breed of the animal (from vgg)
-            sex: str,   # 'Male' or 'Female'
-            condition: str,    # 'Normal' // Condition of the animal
-            age_animal: float,    # '4' // Age in years given in floats
-            castraded: bool):      # 'Yes' or 'No'
-    """
-    Make a single prediction.
-    VGG provides 3 conditions that are used as features for main model.
-    User inputs the rest for the prediction.
-    Results given in 'days inside the shelter'
-        """
+def predict(age_upon_intake_y: float,
+            animal_type: str,
+            breed: str,
+            intake_condition: str,
+            sex: str,
+            sex_type: str): #I removed 'color: str' but should I???
+
     """"    possivelmente é o que tem q acompanhar a linha 8 pra faster predictions
     prediction = app.state.model.predict(input_data)
     return {"prediction": prediction}
     """
 
-    X_pred = pd.DataFrame(dict(
-        vgg_cat_or_dog=['animal_type'],
-        vgg_color=['color'],
-        vgg_breed=['breed'],
-        sex=['sex'],
-        condition=['intake_condition'],
-        age_animal=['age_upon_intake_(years)'],
-        castraded=['sex_type']))
+    X_pred = pd.DataFrame.from_dict({
+        "age_upon_intake_(years)": [age_upon_intake_y],
+        "animal_type": [animal_type],
+        "breed": [breed],
+        "intake_condition": [intake_condition],
+        "sex": [sex],
+        "sex_type": [sex_type]
+    })
+    #for now, color is being ignore until pipeline is correct
+    X_pred[['beige', 'black', 'brown',
+       'gray', 'orange', 'point', 'smoke', 'spotted', 'striped',
+       'tricolor', 'white']] = [1,0,0,0,0,0,0,0,0,0,0]
+
     print(X_pred)
-    file = open('pipeline_best_model.pkl','rb')
+
+    file = open('./Animal_Adoption/api/pipeline_best_model.pkl','rb')
     pipeline = pickle.load(file)
+    print(pipeline.feature_names_in_)
     # assert model is not None
     y_pred = pipeline.predict(X_pred)
     return {'days_in_shelter':float(y_pred)}
