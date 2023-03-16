@@ -92,7 +92,7 @@ else:
 
 age_upon_intake_years = years+ months/12
 root_dir = os.path.dirname(os.path.dirname(__file__))
-breed_path = os.path.join(root_dir, "../raw_data", "breeds.csv")
+breed_path = os.path.join(root_dir, "breeds.csv")
 breed_tuple = pd.read_csv(os.path.join(breed_path), index_col=0).index
 breed = col3.selectbox("Breed", breed_tuple)
 color = col4.selectbox("Color or pattern",('Black', 'White', 'Brown', 'Beige','Has Spots', 'Tabby or Brindle', 'Tricolor'))
