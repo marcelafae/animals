@@ -45,23 +45,7 @@ def predict(age_upon_intake_y: float,
        'tricolor', 'white']] = [1,0,0,0,0,0,0,0,0,0,0]
 
     print(X_pred)
-
-    file = open('./Animal_Adoption/api/pipeline_best_model.pkl','rb')
-    pipeline = pickle.load(file)
-    print(pipeline.feature_names_in_)
-    # assert model is not None
-    y_pred = pipeline.predict(X_pred)
-    return {'days_in_shelter':float(y_pred)}
-
-@app.get("/")
-def root():
-    return {'I say jump': 'How high?'}
-
-
-
-#------------------------------------------ code for when there's 2 models
-
-    # if animal_type == "Dog":
+   # if animal_type == "Dog":
     #     X_pred = pd.DataFrame.from_dict({
     #         "age_upon_intake_(years)": [age_upon_intake_y],
     #         "animal_type": [animal_type],
@@ -84,3 +68,18 @@ def root():
     #     y_pred = pipeline.predict(X_pred)
     #     return {'days_in_shelter':float(y_pred)}
     # else:
+#______from here you can deal w cats
+    file = open('./Animal_Adoption/api/pipeline_best_model.pkl','rb')
+    pipeline = pickle.load(file)
+    print(pipeline.feature_names_in_)
+    # assert model is not None
+    y_pred = pipeline.predict(X_pred)
+    return {'days_in_shelter':float(y_pred)}
+
+@app.get("/")
+def root():
+    return {'I say jump': 'How high?'}
+
+
+
+#------------------------------------------ code for when there's 2 models
