@@ -145,6 +145,7 @@ if st.button('Click here'):
         # st.write(response)
         # st.write(response.json())
         days = round(response.json()['days_in_shelter'], 1)
+        st.balloons()
 
         st.write(f'The animal will stay around {days} days')
         # if response.json()['days_in_shelter'] == 0:
