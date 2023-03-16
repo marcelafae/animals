@@ -81,7 +81,7 @@ elif choose == '🐈 Cat':
 
 
 st.write("### How old is this animal and what does it look like?")
-col1, col2, col3, col4 = st.columns((1,1,3,2))
+col1, col2, col3, col4 = st.columns((1,1,1.5,2))
 
 years = col1.number_input('Years',min_value = 0, max_value = 28,step=1,value=0)
 
@@ -91,15 +91,21 @@ else:
     months = col2.number_input('Months',min_value = 0, max_value = 11,step=1,value=1)
 
 age_upon_intake_years = years+ months/12
-root_dir = os.path.dirname(os.path.dirname(__file__))
-breed_path = os.path.join(root_dir, "breeds.csv")
-breed_tuple = pd.read_csv(os.path.join(breed_path), index_col=0).index
-breed = col3.selectbox("Breed", breed_tuple)
-color = col4.selectbox("Color or pattern",('Black', 'White', 'Brown', 'Beige','Has Spots', 'Tabby or Brindle', 'Tricolor'))
+color = col3.selectbox("Color or pattern",('Black', 'White', 'Brown', 'Beige','Has Spots', 'Tabby or Brindle', 'Tricolor'))
+
+if animal_type == 'Dog':
+    root_dir = os.path.dirname(os.path.dirname(__file__))
+    breed_path = os.path.join(root_dir, "breeds.csv")
+    breed_tuple = pd.read_csv(os.path.join(breed_path), index_col=0).index
+    breed = col4.selectbox("Breed", breed_tuple)
+else:
+    breed = "Domestic Shorthair Mix"
+
+
 
 
 st.write("### General Characteristics")
-col1, col2, col3= st.columns((2,2,5))
+col1, col2, col3= st.columns((1,1,1))
 #good_with_other_dogs = col1.selectbox("Friendliness with dogs",('1','2', '3', '4', '5'))
 
 
