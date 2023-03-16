@@ -71,21 +71,17 @@ elif choose == '🐈 Cat':
 #THIS PART NEEDS TO BE 100% AN ACCURATE MATCH W THE MODEL!!!!!!!!!!!!!!!!!!!!!!!!
 
 # Conditions
-st.write("### Can you tell me more about how this animal was found?")
+#st.write("### Can you tell me more about how this animal was found?")
 
-col1, col2, col3 = st.columns((2,2,3))
+#col1, col2, col3 = st.columns((2,2,3))
 
 #check the column name and what I wrote here
 # intake_type = col1.selectbox("Pick one of those options about how this animal ended up in your shelter?",\
 #     ('Public Assist', 'Owner Surrender', 'Stray', 'Euthanasia Request','Abandoned'))
 
-intake_condition = col2.selectbox("Now plase tell us about this animal health conditions",\
-    ('Normal', 'Injured', 'Aged', 'Sick', 'Other', 'Medical', 'Feral', 'Pregnant', 'Nursing', 'Behavior'))
 
-
-
-st.write("### How old is this animal? And does it look like it has a breed?")
-col1, col2, col3, col4 = st.columns((1.5,1.5,2, 5))
+st.write("### How old is this animal and what does it look like?")
+col1, col2, col3, col4 = st.columns((1,1,3,2))
 
 years = col1.number_input('Years',min_value = 0, max_value = 28,step=1,value=0)
 
@@ -99,26 +95,31 @@ root_dir = os.path.dirname(os.path.dirname(__file__))
 breed_path = os.path.join(root_dir, "../raw_data", "breeds.csv")
 breed_tuple = pd.read_csv(os.path.join(breed_path), index_col=0).index
 breed = col3.selectbox("Breed", breed_tuple)
+color = col4.selectbox("Color or pattern",('Black', 'White', 'Brown', 'Beige','Has Spots', 'Tabby or Brindle', 'Tricolor'))
 
 
-st.write("### Animal Characteristics")
-col1, col2, col3, col4, col5= st.columns((2,1.5,1.5,3,5))
+st.write("### General Characteristics")
+col1, col2, col3= st.columns((2,2,5))
 #good_with_other_dogs = col1.selectbox("Friendliness with dogs",('1','2', '3', '4', '5'))
 
-color = col2.selectbox("Color or pattern",('Black', 'White', 'Brown', 'Beige','Has Spots', 'Tabby or Brindle', 'Tricolor'))
+
+intake_condition = col1.selectbox("Animal's condition",\
+    ('Normal', 'Injured', 'Aged', 'Sick', 'Other', 'Medical', 'Feral', 'Pregnant', 'Nursing', 'Behavior'))
 
 gender = ("Female", "Male")
 options = list(range(len(gender)))
-male_or_female_intake = col3.selectbox("Sex", options, format_func=lambda x: gender[x])
+male_or_female_intake = col2.selectbox("Sex", options, format_func=lambda x: gender[x])
 
 if male_or_female_intake == 0:
     spayed = ("Intact", "Spayed")
     options = list(range(len(spayed)))
-    neutered_or_spayed_intake = col4.selectbox("Intact, Spayed or Neutered?", options, format_func=lambda x: spayed[x])
+    neutered_or_spayed_intake = col3.selectbox("Intact, Spayed or Neutered?", options, format_func=lambda x: spayed[x])
 else:
     neutered = ("Intact", "Neutered")
     options = list(range(len(neutered)))
-    neutered_or_spayed_intake = col5.selectbox("Intact, Spayed or Neutered?", options, format_func=lambda x: neutered[x])
+    neutered_or_spayed_intake = col3.selectbox("Intact, Spayed or Neutered?", options, format_func=lambda x: neutered[x])
+
+
 
 
 st.write(f"### Please press the button to check if the animal will stay longer than 7 days in the shelter.")
@@ -147,7 +148,7 @@ if st.button('Click here'):
         days = round(response.json()['days_in_shelter'], 1)
         st.balloons()
 
-        st.write(f'The animal will stay around {days} days')
+        st.write(f'# The animal will stay around {days} days')
         # if response.json()['days_in_shelter'] == 0:
         #     st.success("This animal is likely to stay less than one week in your shelter!")
         # else:
