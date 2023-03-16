@@ -122,7 +122,7 @@ else:
 
 
 
-st.write(f"### Please press the button to check if the animal will stay longer than 7 days in the shelter.")
+st.write(f"### Please press the button to check how long this animal will need to wait to find a home.")
 
 # Prediction
 
