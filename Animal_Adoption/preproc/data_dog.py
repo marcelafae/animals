@@ -24,7 +24,7 @@ def get_data_dogs():
     data.dropna(inplace=True)
     data = common_uncommon_dogs(data)
     data = split_sex_from_castrate(data)
-    data = data.merge(breed_data.reset_index(names='breed'), on='breed', how='outer')
+    data = data.merge(breed_data.reset_index(names='breed'), on='breed', how='inner')
     return data
 
 
@@ -49,7 +49,7 @@ def get_breed_dogs(series: pd.Series) -> pd.Series:
         d = d.replace("old", "")
 
         ## fix the breeds for the api
-        d = d.replace("pitbull", "American Staffordshire Terrier")
+        d = d.replace("pit bull", "american staffordshire terrier")
         d = d.replace("patterdale terr", "Patterdale Terrier")
         d = d.replace("bluetick hound", "Bluetick Coonhound")
         d = d.replace("standard poodle", "Poodle (Standard)")
