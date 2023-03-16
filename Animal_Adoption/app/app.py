@@ -142,7 +142,7 @@ if st.button('Click here'):
             "color": color
         }
 
-        response = requests.get(url_local, params=params)
+        response = requests.get(url, params=params)
         # st.write(response)
         # st.write(response.json())
         days = round(response.json()['days_in_shelter'], 1)
