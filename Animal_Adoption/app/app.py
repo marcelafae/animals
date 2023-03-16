@@ -98,6 +98,9 @@ if animal_type == 'Dog':
     breed_path = os.path.join(root_dir, "breeds.csv")
     breed_tuple = pd.read_csv(os.path.join(breed_path), index_col=0).index
     breed = col4.selectbox("Breed", breed_tuple)
+else:
+    breed = "Domestic Shorthair Mix"
+
 
 
 
