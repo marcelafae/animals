@@ -79,8 +79,8 @@ col1, col2, col3 = st.columns((2,2,3))
 # intake_type = col1.selectbox("Pick one of those options about how this animal ended up in your shelter?",\
 #     ('Public Assist', 'Owner Surrender', 'Stray', 'Euthanasia Request','Abandoned'))
 
-intake_condition = col2.selectbox("Now plase tell us about this animal health conditions",\
-    ('Normal', 'Injured', 'Aged', 'Sick', 'Other', 'Medical', 'Feral', 'Pregnant', 'Nursing', 'Behavior'))
+intake_condition_2classes = col2.selectbox("Now plase tell us about this animal health conditions",\
+    ('normal', 'not normal'))
 
 
 
@@ -105,7 +105,7 @@ st.write("### Animal Characteristics")
 col1, col2, col3, col4, col5= st.columns((2,1.5,1.5,3,5))
 #good_with_other_dogs = col1.selectbox("Friendliness with dogs",('1','2', '3', '4', '5'))
 
-color = col2.selectbox("Color or pattern",('Black', 'White', 'Brown', 'Beige','Has Spots', 'Tabby or Brindle', 'Tricolor'))
+color_3classes = col2.selectbox("Color or pattern",('Monocolor', 'Bicolor', 'Tricolor'))
 
 gender = ("Female", "Male")
 options = list(range(len(gender)))
@@ -131,6 +131,22 @@ if st.button('Click here'):
     if choose == '':
         st.warning("No, no, no. You need to pick 'Dog' or 'Cat'")
     else: #please make sure this is correct with the model!!!!!
+## DOG params= {
+            # "age_upon_intake_(years)": [age_upon_intake_(years)],
+            # "breed": [breed_d],
+            # "color_3classes": [color_3classes],
+            # "intake_condition_2classes": [intake_condition_2classes],
+            # "sex": [sex],
+            # "sex_type": [sex_type]}
+## CAT params={
+            # "age_upon_intake_(years)": [age_upon_intake_(years)],
+            # "hair length": [breed_c],
+            # "Cat/Kitten": [cat_kitten_c],
+            # "color_3classes": [color_3classes],
+            # "intake_condition_2classes": [intake_condition_2classes],
+            # "sex": [sex],
+            # "Spay/Neuter": [sex_type]})
+        
         params = {
             "age_upon_intake_y": age_upon_intake_years,
             "animal_type": animal_type,
@@ -144,10 +160,10 @@ if st.button('Click here'):
         response = requests.get(url_local, params=params)
         # st.write(response)
         # st.write(response.json())
-        days = round(response.json()['days_in_shelter'], 1)
+        days = round(response.json()['time_in_shelter_days_round_2classes'], 1)
         st.balloons()
 
-        st.write(f'The animal will stay around {days} days')
+        st.write(f'The animal will stay {days}')
         # if response.json()['days_in_shelter'] == 0:
         #     st.success("This animal is likely to stay less than one week in your shelter!")
         # else:
